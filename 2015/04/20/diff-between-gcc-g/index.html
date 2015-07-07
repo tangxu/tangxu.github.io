@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>cc、gcc、g++、CC的区别概括 | 山中书事</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="gcc是C编译器；g++是C++编译器；linux下cc一般是一个符号连接，指向gcc；gcc和g++都是GUN（组织）的编译器。而CC则一般是makefile里面的一个名字，即宏定义，嘿，因为Linux/Unix都是大小写敏感的系统，这点一定要注意。
+cc是Unix系统的C Compiler，而gcc则是GNU Compiler Collection，GNU编译器套装（G++就是GCC这个编译器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cc、gcc、g++、CC的区别概括">
+<meta property="og:url" content="http://tangxu.github.io/blog/2015/04/20/diff-between-gcc-g/index.html">
+<meta property="og:site_name" content="山中书事">
+<meta property="og:description" content="gcc是C编译器；g++是C++编译器；linux下cc一般是一个符号连接，指向gcc；gcc和g++都是GUN（组织）的编译器。而CC则一般是makefile里面的一个名字，即宏定义，嘿，因为Linux/Unix都是大小写敏感的系统，这点一定要注意。
+cc是Unix系统的C Compiler，而gcc则是GNU Compiler Collection，GNU编译器套装（G++就是GCC这个编译器">
+<meta property="og:updated_time" content="2015-07-07T14:07:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="cc、gcc、g++、CC的区别概括">
+<meta name="twitter:description" content="gcc是C编译器；g++是C++编译器；linux下cc一般是一个符号连接，指向gcc；gcc和g++都是GUN（组织）的编译器。而CC则一般是makefile里面的一个名字，即宏定义，嘿，因为Linux/Unix都是大小写敏感的系统，这点一定要注意。
+cc是Unix系统的C Compiler，而gcc则是GNU Compiler Collection，GNU编译器套装（G++就是GCC这个编译器">
+  
+    <link rel="alternative" href="/atom.xml" title="山中书事" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/blog/css/style.css" type="text/css">
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">山中书事</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://tangxu.github.io/blog"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-diff-between-gcc-g" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2015/04/20/diff-between-gcc-g/" class="article-date">
+  <time datetime="2015-04-20T03:17:12.000Z" itemprop="datePublished">2015-04-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      cc、gcc、g++、CC的区别概括
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>gcc是C编译器；g++是C++编译器；linux下cc一般是一个符号连接，指向gcc；gcc和g++都是GUN（组织）的编译器。而CC则一般是makefile里面的一个名字，即宏定义，嘿，因为Linux/Unix都是大小写敏感的系统，这点一定要注意。</p>
+<p>cc是Unix系统的C Compiler，而gcc则是GNU Compiler Collection，GNU编译器套装（G++就是GCC这个编译器集合中的C++编译器）。gcc原名为Gun C语言编译器，因为它原本只能处理C语言，但gcc很快地扩展，包含很多编译器（C、C++、Objective-C、Ada、Fortran、Java）。因此，它们是不一样的，一个是古老的C编译器，一个是GNU编译器集合，gcc里面的C编译器比cc强大多了，因此没必要用cc。</p>
+<p>下载不到cc的原因在于：cc来自于昂贵的Unix系统，cc是商业软件。</p>
+<p>Linux下的cc是gcc符号连接，可以通过<code>$ls –l /usr/bin/cc</code>来简单察看，该变量是make程序的内建变量，默认指向gcc。cc符号链接和变量存在的意义在于源码的移植性，可以方便的用gcc来编译老的用cc编译的Unix软件，甚至连makefile都不用改在，而且也便于Linux程序在Unix下编译。</p>
+<h3 id="误区一：_gcc_只能编译_C_代码，g++_只能编译_C++_代码">误区一： gcc 只能编译 C 代码，g++ 只能编译 C++ 代码</h3><p>两者都可以，但是请注意:</p>
+<ol>
+<li><p>后缀为 .c 的，gcc 把它当作是 C 程序，而 g++ 当作是 C++ 程序；<br>后缀为.cpp的，两者都会认为是 C++程序；<br>注意： 虽然 C++ 是 C 的超集，但是两者对语法的要求是有区别的！ C++ 的语法规则更加严谨一些。</p>
+</li>
+<li><p>编译阶段，g++ 会调用 gcc，对于 C++ 代码，两者是等价的，<br>但是因为 gcc 命令不能自动和 C++ 库链接，所以通常用 g++ 来完成链接，<br>为了统一，干脆编译与链接统统用 g++ 了，就给人一种错觉，好像 cpp 程序只能用 g++ 似的。</p>
+</li>
+</ol>
+<h3 id="误区二：_gcc_不会定义___cplusplus_宏，而_g++_会">误区二： gcc 不会定义 __cplusplus 宏，而 g++ 会</h3><p>实际上，这个宏只是标志着编译器将会把代码按 C 还是 C++ 语法来解释，如上所述，如果后缀为 .c，并且采用 gcc 编译器，则该宏就是未定义的，否则，就是已定义。</p>
+<h3 id="误区三：_编译只能用_gcc，链接只能用_g++">误区三： 编译只能用 gcc，链接只能用 g++</h3><p>严格来说，这句话不算错误，但是它混淆了概念，应该这样说：<br>编译可以用 gcc 或 g++，而链接可以用 g++ 或者 gcc -lstdc++。<br>因为 gcc 命令不能自动和 C++ 库链接，所以通常使用 g++ 来完成链接。<br>但在编译阶段，g++ 会自动调用 gcc，二者等价。</p>
+<h3 id="误区四：_extern_“C”_与_gcc_或_g++_有关系">误区四： extern “C” 与 gcc 或 g++ 有关系</h3><p>实际上并无关系，<br>无论是 gcc 还是 g++，用 extern “C” 时，都是以 C 的命名方式来为 函数 命名，<br>否则，都以 C++ 方式为 函数 命名。<br>试验如下：</p>
+<p>test.h:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span> <span class="function"><span class="keyword">void</span> <span class="title">CppPrintf</span><span class="params">(<span class="keyword">void</span>)</span></span>;</span><br></pre></td></tr></table></figure></p>
+<p>test.cpp: </p>
+<pre><code><span class="preprocessor">#<span class="keyword">include</span> &lt;iostream&gt;</span>
+<span class="preprocessor">#<span class="keyword">include</span> "test.h"</span>
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;
+<span class="function"><span class="keyword">void</span>
+<span class="title">CppPrintf</span><span class="params">( <span class="keyword">void</span> )</span>
+</span>{
+<span class="built_in">cout</span> &lt;&lt; <span class="string">"Hellon"</span>;
+}
+</code></pre><p>main.cpp: </p>
+<pre><code><span class="preprocessor">#<span class="keyword">include</span> &lt;stdlib.h&gt;</span>
+<span class="preprocessor">#<span class="keyword">include</span> &lt;stdio.h&gt;</span>
+<span class="preprocessor">#<span class="keyword">include</span> "test.h"</span>
+<span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">( <span class="keyword">void</span> )</span>
+</span>{
+ CppPrintf();
+ <span class="keyword">return</span> <span class="number">0</span>;
+ }
+</code></pre><ol>
+<li>先给 test.h 里的 void CppPrintf(void); 加上 extern “C”，看用 gcc 和 g++ 命名有什么不同。</li>
+</ol>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ g++ -S test<span class="class">.cpp</span></span><br><span class="line">$ less test<span class="class">.s</span></span><br><span class="line"><span class="class">.globl</span>  CppPrintf   &lt;-- 注意此函数的命名</span><br><span class="line"><span class="class">.type</span>  CppPrintf , @function</span><br></pre></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ gcc -S test<span class="class">.cpp</span></span><br><span class="line">$ less test<span class="class">.s</span></span><br><span class="line"><span class="class">.globl</span>  CppPrintf   &lt;-- 注意此函数的命名</span><br><span class="line"><span class="class">.type</span>  CppPrintf , @function</span><br></pre></td></tr></table></figure>
+<p>完全相同！</p>
+<ol>
+<li>去掉 test.h 里 void CppPrintf(void); 前面的 extern “C”，看用 gcc 和 g++ 命名有什么不同。</li>
+</ol>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$g</span>++ -S test<span class="class">.cpp</span></span><br><span class="line">$ less test<span class="class">.s</span></span><br><span class="line"><span class="class">.globl</span>  _Z9CppPrintfv   &lt;-- 注意此函数的命名</span><br><span class="line"><span class="class">.type</span>  _Z9CppPrintfv , @function</span><br></pre></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ gcc -S test<span class="class">.cpp</span></span><br><span class="line">$ less test<span class="class">.s</span></span><br><span class="line"><span class="class">.globl</span>  _Z9CppPrintfv   &lt;-- 注意此函数的命名</span><br><span class="line"><span class="class">.type</span>  _Z9CppPrintfv , @function</span><br></pre></td></tr></table></figure>
+<p>完全相同！</p>
+<p>结论：<br>完全相同，可见 extern “C” 与采用 gcc 或 g++ 并无关系，<br>以上的试验还间接的印证了前面的说法：在编译阶段，g++ 是调用 gcc 的。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://tangxu.github.io/blog/2015/04/20/diff-between-gcc-g/" data-id="cibte0vae0000lvikyujhvq7k" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/blog/2015/07/07/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Hello World
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  
+    
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2015/07/">July 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blog/archives/2015/04/">April 2015</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/blog/2015/07/07/equation-test/">hexo使用mathjax</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2015/07/07/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/blog/2015/04/20/diff-between-gcc-g/">cc、gcc、g++、CC的区别概括</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2015 Tang<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/blog/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/blog/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/blog/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>
