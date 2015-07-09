@@ -142,6 +142,81 @@
           
           
             
+              <a class="post-title-link" href="/2015/07/09/leetcode-count-primes/">
+                leetcode题解 - Count Primes
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2015-07-09
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2015/07/09/leetcode-count-primes/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/09/leetcode-count-primes/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <h2 id="leetcode_-_Count_Primes">leetcode - Count Primes</h2><p>leetcode - <a href="https://leetcode.com/problems/count-primes/" target="_blank" rel="external">https://leetcode.com/problems/count-primes/</a></p>
+<p>Q:</p>
+<p>Description:</p>
+<p>Count the number of prime numbers less than a non-negative number, n</p>
+<p>Hint: The number n could be in the order of 100,000 to 5,000,000.</p>
+<p>Code:</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">countPrimes</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> count=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(n&lt;<span class="number">2</span>) <span class="keyword">return</span> count;</span><br><span class="line">        <span class="keyword">bool</span> *num = <span class="keyword">new</span> <span class="keyword">bool</span>[n];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">            num[i]=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> i=<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">while</span>(i*i&lt;n)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> idx=i*<span class="number">2</span>;idx&lt;n;idx=idx+i)</span><br><span class="line">                num[idx]=<span class="number">0</span>;</span><br><span class="line">            <span class="keyword">do</span>&#123;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">while</span>(i*i&lt;n &amp;&amp; num[i]==<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>; i&lt;n; i++)</span><br><span class="line">            <span class="keyword">if</span> (num[i]==<span class="number">1</span>) count++;</span><br><span class="line">　　　　　<span class="keyword">delete</span> []num;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>思路： 要用筛法：<a href="http://zh.wikipedia.org/wiki/%E5%9F%83%E6%8B%89%E6%89%98%E6%96%AF%E7%89%B9%E5%B0%BC%E7%AD%9B%E6%B3%95" target="_blank" rel="external">wiki</a></p>
+<p>筛去不是素数的。首先建立一个bool型数组，然后初始化为全1，即全为素数。然后找到第一个素数i（从2开始），如果i的平方没有超过n，那么从i的两倍开始，加一倍标记一下0（非素数）。然后对i自加，直到找到下一素数。重复上述过程。</p>
+<p>注意题目中是小于n。</p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
               <a class="post-title-link" href="/2015/07/08/leetcode-longest-common-prefix/">
                 leetcode题解 - Longest Common Prefix
               </a>
@@ -499,7 +574,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
