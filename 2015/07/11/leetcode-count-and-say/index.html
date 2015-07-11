@@ -22,7 +22,7 @@
 
 
 
-  <meta name="keywords" content="leetcode," />
+  <meta name="keywords" content="Hexo,next" />
 
 
 
@@ -45,7 +45,7 @@
 
 
 
-  <title> leetcode题解 - Count Primes // 山中书事 </title>
+  <title> leetcode题解 - Count and Say // 山中书事 </title>
 </head>
 
 <body>
@@ -140,7 +140,7 @@
           
           
             
-              leetcode题解 - Count Primes
+              leetcode题解 - Count and Say
             
           
         </h1>
@@ -148,7 +148,7 @@
 
       <div class="post-meta">
         <span class="post-time">
-          发表于 2015-07-09
+          发表于 2015-07-11
         </span>
 
         
@@ -157,8 +157,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2015/07/09/leetcode-count-primes/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/09/leetcode-count-primes/"></span>
+            <a href="/2015/07/11/leetcode-count-and-say/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/11/leetcode-count-and-say/"></span>
             </a>
           </span>
           
@@ -172,40 +172,35 @@
       
 
       
-        <h2 id="leetcode_-_Count_Primes">leetcode - Count Primes</h2><p>leetcode - <a href="https://leetcode.com/problems/count-primes/" target="_blank" rel="external">https://leetcode.com/problems/count-primes/</a></p>
-<p>Q:</p>
-<p>Description:</p>
-<p>Count the number of prime numbers less than a non-negative number, n</p>
-<p>Hint: The number n could be in the order of 100,000 to 5,000,000.</p>
+        <h2 id="leetcode_-_Count_and_Say">leetcode - Count and Say</h2><p>Q:</p>
+<p>The count-and-say sequence is the sequence of integers beginning as follows:<br>1, 11, 21, 1211, 111221, …</p>
+<p>1 is read off as “one 1” or 11.<br>11 is read off as “two 1s” or 21.<br>21 is read off as “one 2, then one 1” or 1211.</p>
+<p>Given an integer n, generate the nth sequence.</p>
+<p>Note: The sequence of integers will be represented as a string.</p>
 <p>Code:</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">countPrimes</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> count=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(n&lt;<span class="number">2</span>) <span class="keyword">return</span> count;</span><br><span class="line">        <span class="keyword">bool</span> *num = <span class="keyword">new</span> <span class="keyword">bool</span>[n];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">            num[i]=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> i=<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">while</span>(i*i&lt;n)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> idx=i*<span class="number">2</span>;idx&lt;n;idx=idx+i)</span><br><span class="line">                num[idx]=<span class="number">0</span>;</span><br><span class="line">            <span class="keyword">do</span>&#123;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">while</span>(i*i&lt;n &amp;&amp; num[i]==<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>; i&lt;n; i++)</span><br><span class="line">            <span class="keyword">if</span> (num[i]==<span class="number">1</span>) count++;</span><br><span class="line">　　　　　<span class="keyword">delete</span> []num;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>思路： 要用筛法：<a href="http://zh.wikipedia.org/wiki/%E5%9F%83%E6%8B%89%E6%89%98%E6%96%AF%E7%89%B9%E5%B0%BC%E7%AD%9B%E6%B3%95" target="_blank" rel="external">wiki</a></p>
-<p>筛去不是素数的。首先建立一个bool型数组，然后初始化为全1，即全为素数。然后找到第一个素数i（从2开始），如果i的平方没有超过n，那么从i的两倍开始，加一倍标记一下0（非素数）。然后对i自加，直到找到下一素数。重复上述过程。</p>
-<p>注意题目中是小于n。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">countAndSay</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> count=<span class="number">1</span>;</span><br><span class="line">        <span class="built_in">string</span> seq, result;</span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"1"</span>;</span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment">//        if(n==2)&#123;</span></span><br><span class="line"><span class="comment">//            return "11";</span></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line">        seq = countAndSay(n-<span class="number">1</span>);</span><br><span class="line">        <span class="built_in">string</span>::iterator iter_seq = seq.begin()+<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(iter_seq!=seq.end())&#123;</span><br><span class="line">            <span class="keyword">if</span> (*iter_seq == *(iter_seq-<span class="number">1</span>))&#123;</span><br><span class="line">                count++;</span><br><span class="line">                iter_seq++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                result.push_back(<span class="string">'0'</span>+count);</span><br><span class="line">                result.push_back(*(iter_seq-<span class="number">1</span>));</span><br><span class="line">                count=<span class="number">1</span>;</span><br><span class="line">                iter_seq++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        result.push_back(<span class="string">'0'</span>+count);</span><br><span class="line">        result.push_back(*(iter_seq-<span class="number">1</span>));</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>我的思路： 递归。</p>
+<p>比较简单。 要注意如何将数字转化为char， push_back只接受char</p>
+<p><a href="http://blog.csdn.net/talentluke/article/details/6050617" target="_blank" rel="external">http://blog.csdn.net/talentluke/article/details/6050617</a></p>
+<p><a href="http://zhidao.baidu.com/link?url=i4aEJh3bn_QWQC-DyXjF3eEorCMklZiEWGg2u8N8MdPl4-HkKQIvL8FazbX7UeRhK3WetF-XXCctpm5ElYHXaa" target="_blank" rel="external">http://zhidao.baidu.com/link?url=i4aEJh3bn_QWQC-DyXjF3eEorCMklZiEWGg2u8N8MdPl4-HkKQIvL8FazbX7UeRhK3WetF-XXCctpm5ElYHXaa</a></p>
 
       
     </div>
 
     <div class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/leetcode/"> #leetcode </a>
-          
-        </div>
-      
 
       
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/07/11/leetcode-count-and-say/">leetcode题解 - Count and Say</a>
+              <a href="/2015/07/11/can-not-change-string-pointed-by-char-point/">指向字符串的指针为何不能用来修改此字符串</a>
             
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/07/08/leetcode-longest-common-prefix/">leetcode题解 - Longest Common Prefix</a>
+              <a href="/2015/07/09/leetcode-count-primes/">leetcode题解 - Count Primes</a>
             
           </div>
         </div>
@@ -220,10 +215,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2015/07/09/leetcode-count-primes/"
-     data-title="leetcode题解 - Count Primes"
+        <div class="ds-share flat" data-thread-key="2015/07/11/leetcode-count-and-say/"
+     data-title="leetcode题解 - Count and Say"
      data-content=""
-     data-url="http://tangxu.github.io/2015/07/09/leetcode-count-primes/">
+     data-url="http://tangxu.github.io/2015/07/11/leetcode-count-and-say/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -244,8 +239,8 @@
     
       <div class="comments" id="comments">
         
-          <div class="ds-thread" data-thread-key="2015/07/09/leetcode-count-primes/"
-               data-title="leetcode题解 - Count Primes" data-url="http://tangxu.github.io/2015/07/09/leetcode-count-primes/">
+          <div class="ds-thread" data-thread-key="2015/07/11/leetcode-count-and-say/"
+               data-title="leetcode题解 - Count and Say" data-url="http://tangxu.github.io/2015/07/11/leetcode-count-and-say/">
           </div>
         
       </div>
@@ -350,7 +345,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#leetcode_-_Count_Primes"><span class="nav-number">1.</span> <span class="nav-text">leetcode - Count Primes</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#leetcode_-_Count_and_Say"><span class="nav-number">1.</span> <span class="nav-text">leetcode - Count and Say</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
