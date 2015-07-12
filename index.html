@@ -142,6 +142,81 @@
           
           
             
+              <a class="post-title-link" href="/2015/07/12/leetcode-house-robber/">
+                leetcode题解 - House Robber
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2015-07-12
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2015/07/12/leetcode-house-robber/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/12/leetcode-house-robber/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <h2 id="leetcode_-_house-robber">leetcode - house-robber</h2><p><a href="https://leetcode.com/problems/house-robber/" target="_blank" rel="external">https://leetcode.com/problems/house-robber/</a></p>
+<p>Q：</p>
+<p>You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed, the only constraint stopping you from robbing each of them is that adjacent houses have security system connected and it will automatically contact the police if two adjacent houses were broken into on the same night.</p>
+<p>Given a list of non-negative integers representing the amount of money of each house, determine the maximum amount of money you can rob tonight without alerting the police.</p>
+<p>Code:<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">rob</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len = nums.size();</span><br><span class="line">        <span class="keyword">if</span>(len==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(len==<span class="number">1</span>) <span class="keyword">return</span> nums[<span class="number">0</span>];</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; value(len+<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">        value[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        value[<span class="number">1</span>] = nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>; i&lt;len+<span class="number">1</span>; i++)&#123;</span><br><span class="line">            value[i]=max( value[i-<span class="number">1</span>], value[i-<span class="number">2</span>]+nums[i-<span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> value[len];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>思路： 应该是动态规划 dp 问题。 之前没写过……一开始写成了递归，超时了。<br>后来看了一下别人的代码，都是用数组来存储数据的。</p>
+<p>References：<br><a href="http://www.cnblogs.com/ganganloveu/p/4417485.html" target="_blank" rel="external">http://www.cnblogs.com/ganganloveu/p/4417485.html</a><br><a href="http://www.cnblogs.com/sdjl/articles/1274312.html" target="_blank" rel="external">http://www.cnblogs.com/sdjl/articles/1274312.html</a></p>
+<p>另一种写法：<br><a href="http://www.meetqun.com/thread-8304-1-1.html" target="_blank" rel="external">http://www.meetqun.com/thread-8304-1-1.html</a></p>
+<p>之前写的错的：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">rob</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums.size()==<span class="number">1</span>) <span class="keyword">return</span> nums[<span class="number">0</span>];</span><br><span class="line">      <span class="comment">//  int len = num.size();</span></span><br><span class="line">        <span class="comment">//vector&lt;int&gt;::iterator iter1 = nums.begin();</span></span><br><span class="line">        <span class="comment">//vector&lt;int&gt;::iterator iter2 = nums.end()-1;</span></span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; subnums1(nums.begin(), nums.end()-<span class="number">1</span>);</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; subnums2(nums.begin(), nums.end()-<span class="number">2</span>);</span><br><span class="line">        <span class="keyword">return</span> max( rob(subnums1), rob(subnums2)+ *(nums.end()-<span class="number">1</span>));</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
               <a class="post-title-link" href="/2015/07/11/can-not-change-string-pointed-by-char-point/">
                 指向字符串的指针为何不能用来修改此字符串
               </a>
@@ -719,7 +794,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-count">8</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

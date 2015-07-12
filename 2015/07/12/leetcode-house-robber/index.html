@@ -45,7 +45,7 @@
 
 
 
-  <title> leetcode题解 - Longest Common Prefix // 山中书事 </title>
+  <title> leetcode题解 - House Robber // 山中书事 </title>
 </head>
 
 <body>
@@ -140,7 +140,7 @@
           
           
             
-              leetcode题解 - Longest Common Prefix
+              leetcode题解 - House Robber
             
           
         </h1>
@@ -148,7 +148,7 @@
 
       <div class="post-meta">
         <span class="post-time">
-          发表于 2015-07-08
+          发表于 2015-07-12
         </span>
 
         
@@ -157,8 +157,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2015/07/08/leetcode-longest-common-prefix/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/08/leetcode-longest-common-prefix/"></span>
+            <a href="/2015/07/12/leetcode-house-robber/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/12/leetcode-house-robber/"></span>
             </a>
           </span>
           
@@ -172,12 +172,16 @@
       
 
       
-        <h2 id="leetcode_-_Longest_Common_Prefix">leetcode - Longest Common Prefix</h2><p>Q:</p>
-<p>Write a function to find the longest common prefix string amongst an array of strings.</p>
-<p>Code:</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">longestCommonPrefix</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; strs)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> size = strs.size();</span><br><span class="line">        <span class="keyword">int</span> j=<span class="number">0</span>;</span><br><span class="line">        <span class="built_in">string</span> result;</span><br><span class="line">        <span class="keyword">bool</span> flag = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(size==<span class="number">1</span>) <span class="keyword">return</span> strs[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">if</span>(size&gt;<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">while</span>(flag)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; size; i++ )&#123;</span><br><span class="line">                    <span class="keyword">if</span> (strs[i].size()==<span class="number">0</span>)&#123;<span class="keyword">return</span> result;&#125;</span><br><span class="line">                    <span class="keyword">else</span> <span class="keyword">if</span> ( ((j+<span class="number">1</span>)&gt;strs[i].size()) || ((j+<span class="number">1</span>)&gt;strs[<span class="number">0</span>].size()) || (strs[i][j] != strs[<span class="number">0</span>][j]))&#123;</span><br><span class="line">                    flag = <span class="number">0</span>;&#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(flag==<span class="number">1</span>) j++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>; k&lt;j; k++)</span><br><span class="line">                result.push_back(strs[<span class="number">0</span>][k]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>我的思路：</p>
-<p>从第一个字符开始依次比较每个string，如果均相同则比较下一个，同时计数j加1，直到遇到不同字符。打印出第一个string的前j个字符。</p>
+        <h2 id="leetcode_-_house-robber">leetcode - house-robber</h2><p><a href="https://leetcode.com/problems/house-robber/" target="_blank" rel="external">https://leetcode.com/problems/house-robber/</a></p>
+<p>Q：</p>
+<p>You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed, the only constraint stopping you from robbing each of them is that adjacent houses have security system connected and it will automatically contact the police if two adjacent houses were broken into on the same night.</p>
+<p>Given a list of non-negative integers representing the amount of money of each house, determine the maximum amount of money you can rob tonight without alerting the police.</p>
+<p>Code:<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">rob</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len = nums.size();</span><br><span class="line">        <span class="keyword">if</span>(len==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(len==<span class="number">1</span>) <span class="keyword">return</span> nums[<span class="number">0</span>];</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; value(len+<span class="number">1</span>,<span class="number">0</span>);</span><br><span class="line">        value[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        value[<span class="number">1</span>] = nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>; i&lt;len+<span class="number">1</span>; i++)&#123;</span><br><span class="line">            value[i]=max( value[i-<span class="number">1</span>], value[i-<span class="number">2</span>]+nums[i-<span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> value[len];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>思路： 应该是动态规划 dp 问题。 之前没写过……一开始写成了递归，超时了。<br>后来看了一下别人的代码，都是用数组来存储数据的。</p>
+<p>References：<br><a href="http://www.cnblogs.com/ganganloveu/p/4417485.html" target="_blank" rel="external">http://www.cnblogs.com/ganganloveu/p/4417485.html</a><br><a href="http://www.cnblogs.com/sdjl/articles/1274312.html" target="_blank" rel="external">http://www.cnblogs.com/sdjl/articles/1274312.html</a></p>
+<p>另一种写法：<br><a href="http://www.meetqun.com/thread-8304-1-1.html" target="_blank" rel="external">http://www.meetqun.com/thread-8304-1-1.html</a></p>
+<p>之前写的错的：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">rob</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums.size()==<span class="number">1</span>) <span class="keyword">return</span> nums[<span class="number">0</span>];</span><br><span class="line">      <span class="comment">//  int len = num.size();</span></span><br><span class="line">        <span class="comment">//vector&lt;int&gt;::iterator iter1 = nums.begin();</span></span><br><span class="line">        <span class="comment">//vector&lt;int&gt;::iterator iter2 = nums.end()-1;</span></span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; subnums1(nums.begin(), nums.end()-<span class="number">1</span>);</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; subnums2(nums.begin(), nums.end()-<span class="number">2</span>);</span><br><span class="line">        <span class="keyword">return</span> max( rob(subnums1), rob(subnums2)+ *(nums.end()-<span class="number">1</span>));</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -195,13 +199,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/07/09/leetcode-count-primes/">leetcode题解 - Count Primes</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/07/07/equation-test/">hexo使用mathjax</a>
+              <a href="/2015/07/11/can-not-change-string-pointed-by-char-point/">指向字符串的指针为何不能用来修改此字符串</a>
             
           </div>
         </div>
@@ -216,10 +218,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2015/07/08/leetcode-longest-common-prefix/"
-     data-title="leetcode题解 - Longest Common Prefix"
+        <div class="ds-share flat" data-thread-key="2015/07/12/leetcode-house-robber/"
+     data-title="leetcode题解 - House Robber"
      data-content=""
-     data-url="http://tangxu.github.io/2015/07/08/leetcode-longest-common-prefix/">
+     data-url="http://tangxu.github.io/2015/07/12/leetcode-house-robber/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -240,8 +242,8 @@
     
       <div class="comments" id="comments">
         
-          <div class="ds-thread" data-thread-key="2015/07/08/leetcode-longest-common-prefix/"
-               data-title="leetcode题解 - Longest Common Prefix" data-url="http://tangxu.github.io/2015/07/08/leetcode-longest-common-prefix/">
+          <div class="ds-thread" data-thread-key="2015/07/12/leetcode-house-robber/"
+               data-title="leetcode题解 - House Robber" data-url="http://tangxu.github.io/2015/07/12/leetcode-house-robber/">
           </div>
         
       </div>
@@ -346,7 +348,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#leetcode_-_Longest_Common_Prefix"><span class="nav-number">1.</span> <span class="nav-text">leetcode - Longest Common Prefix</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#leetcode_-_house-robber"><span class="nav-number">1.</span> <span class="nav-text">leetcode - house-robber</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
