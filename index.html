@@ -142,6 +142,77 @@
           
           
             
+              <a class="post-title-link" href="/2015/07/13/leetcode-reverse-linked-list/">
+                leetcode题解 - Reverse Linked List
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2015-07-13
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2015/07/13/leetcode-reverse-linked-list/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/13/leetcode-reverse-linked-list/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <h2 id="leetcode_-_Reverse_Linked_List">leetcode - Reverse Linked List</h2><p>单链表逆置。</p>
+<p>Code:<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * struct ListNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     ListNode *next;</span><br><span class="line"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    ListNode* reverseList(ListNode* head) &#123;</span><br><span class="line">        <span class="keyword">if</span>(head!=NULL)&#123;</span><br><span class="line">            ListNode* p = head;</span><br><span class="line">            ListNode* prev = NULL;</span><br><span class="line">            <span class="keyword">while</span>(p != NULL)&#123;</span><br><span class="line">                ListNode* tp = p-&gt;next;</span><br><span class="line">                p-&gt;next = prev;</span><br><span class="line">                prev = p;</span><br><span class="line">                p = tp;</span><br><span class="line">            &#125;</span><br><span class="line">            head = prev;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>显然，题目是一个很基础的题目。但是自己一直以来对于链表的学习不够，应该要好好加强了，争取又好又快地写出来。</p>
+<p>注意判断空指针先。然后注意中途保存指针。</p>
+<p>还有别的写法，后面补上。</p>
+<p>下班~</p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
               <a class="post-title-link" href="/2015/07/12/leetcode-house-robber/">
                 leetcode题解 - House Robber
               </a>
@@ -794,7 +865,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-count">9</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
