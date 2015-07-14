@@ -45,7 +45,7 @@
 
 
 
-  <title> leetcode题解 - Count Primes // 山中书事 </title>
+  <title> leetcode题解 - Isomorphic Strings // 山中书事 </title>
 </head>
 
 <body>
@@ -140,7 +140,7 @@
           
           
             
-              leetcode题解 - Count Primes
+              leetcode题解 - Isomorphic Strings
             
           
         </h1>
@@ -148,7 +148,7 @@
 
       <div class="post-meta">
         <span class="post-time">
-          发表于 2015-07-09
+          发表于 2015-07-14
         </span>
 
         
@@ -157,8 +157,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2015/07/09/leetcode-count-primes/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/09/leetcode-count-primes/"></span>
+            <a href="/2015/07/14/leetcode-isomorphic-strings/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/14/leetcode-isomorphic-strings/"></span>
             </a>
           </span>
           
@@ -172,16 +172,16 @@
       
 
       
-        <h2 id="leetcode_-_Count_Primes">leetcode - Count Primes</h2><p>leetcode - <a href="https://leetcode.com/problems/count-primes/" target="_blank" rel="external">https://leetcode.com/problems/count-primes/</a></p>
-<p>Q:</p>
-<p>Description:</p>
-<p>Count the number of prime numbers less than a non-negative number, n</p>
-<p>Hint: The number n could be in the order of 100,000 to 5,000,000.</p>
-<p>Code:</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">countPrimes</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> count=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(n&lt;<span class="number">2</span>) <span class="keyword">return</span> count;</span><br><span class="line">        <span class="keyword">bool</span> *num = <span class="keyword">new</span> <span class="keyword">bool</span>[n];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n; i++)</span><br><span class="line">            num[i]=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> i=<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">while</span>(i*i&lt;n)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> idx=i*<span class="number">2</span>;idx&lt;n;idx=idx+i)</span><br><span class="line">                num[idx]=<span class="number">0</span>;</span><br><span class="line">            <span class="keyword">do</span>&#123;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">while</span>(i*i&lt;n &amp;&amp; num[i]==<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>; i&lt;n; i++)</span><br><span class="line">            <span class="keyword">if</span> (num[i]==<span class="number">1</span>) count++;</span><br><span class="line">　　　　　<span class="keyword">delete</span> []num;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>思路： 要用筛法：<a href="http://zh.wikipedia.org/wiki/%E5%9F%83%E6%8B%89%E6%89%98%E6%96%AF%E7%89%B9%E5%B0%BC%E7%AD%9B%E6%B3%95" target="_blank" rel="external">wiki</a></p>
-<p>筛去不是素数的。首先建立一个bool型数组，然后初始化为全1，即全为素数。然后找到第一个素数i（从2开始），如果i的平方没有超过n，那么从i的两倍开始，加一倍标记一下0（非素数）。然后对i自加，直到找到下一素数。重复上述过程。</p>
-<p>注意题目中是小于n。</p>
+        <h2 id="leetcode_-_Isomorphic_Strings">leetcode - Isomorphic Strings</h2><p>Given two strings s and t, determine if they are isomorphic.</p>
+<p>Two strings are isomorphic if the characters in s can be replaced to get t.</p>
+<p>All occurrences of a character must be replaced with another character while preserving the order of characters. No two characters may map to the same character but a character may map to itself.</p>
+<p>For example,<br>Given “egg”, “add”, return true.<br>Given “foo”, “bar”, return false.<br>Given “paper”, “title”, return true.</p>
+<p>Note:<br>You may assume both s and t have the same length.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isIsomorphic</span><span class="params">(<span class="built_in">string</span> s, <span class="built_in">string</span> t)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> sHashtable[<span class="number">256</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span> tHashtable[<span class="number">256</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span> len = s.size();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;len; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(sHashtable[s[i]]==<span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(tHashtable[t[i]]==<span class="number">0</span>)&#123;</span><br><span class="line">                    sHashtable[s[i]]=t[i];</span><br><span class="line">                    tHashtable[t[i]]=s[i];</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">if</span>(sHashtable[s[i]]!=t[i]) <span class="keyword">return</span> <span class="number">0</span>;<span class="comment">//same char map to different chars</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>题目的标签是hashtable，一开始我想用简单的方法，以为只有24个字母，所以就把每个字母的映射存下来。但是后来发现，不仅仅有字母，还有数字，所以24维的数组肯定不行。另外不仅要保证<strong>同样</strong>的字母映射到<strong>同样</strong>的字母，还要保证<strong>不同</strong>的字母<strong>不能</strong>映射到一样的字母。</p>
+<p>参考了别人的写法。 思路是建立256维数组（因为最多有256个ascii码？），然后建立两个hash表。开始遍历，如果string s 中出现新字符，要确保映射t也是新的。如果s中是以前出现过的，那么就要验证其映射是否和以前一样。</p>
+<p>（其实第二个hashtable 只是一个flag，用于验证是否出现过了）</p>
+<p>fighting……</p>
 
       
     </div>
@@ -199,13 +199,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/07/11/leetcode-count-and-say/">leetcode题解 - Count and Say</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/07/08/leetcode-longest-common-prefix/">leetcode题解 - Longest Common Prefix</a>
+              <a href="/2015/07/13/leetcode-reverse-linked-list/">leetcode题解 - Reverse Linked List</a>
             
           </div>
         </div>
@@ -220,10 +218,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2015/07/09/leetcode-count-primes/"
-     data-title="leetcode题解 - Count Primes"
+        <div class="ds-share flat" data-thread-key="2015/07/14/leetcode-isomorphic-strings/"
+     data-title="leetcode题解 - Isomorphic Strings"
      data-content=""
-     data-url="http://tangxu.github.io/2015/07/09/leetcode-count-primes/">
+     data-url="http://tangxu.github.io/2015/07/14/leetcode-isomorphic-strings/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -244,8 +242,8 @@
     
       <div class="comments" id="comments">
         
-          <div class="ds-thread" data-thread-key="2015/07/09/leetcode-count-primes/"
-               data-title="leetcode题解 - Count Primes" data-url="http://tangxu.github.io/2015/07/09/leetcode-count-primes/">
+          <div class="ds-thread" data-thread-key="2015/07/14/leetcode-isomorphic-strings/"
+               data-title="leetcode题解 - Isomorphic Strings" data-url="http://tangxu.github.io/2015/07/14/leetcode-isomorphic-strings/">
           </div>
         
       </div>
@@ -350,7 +348,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#leetcode_-_Count_Primes"><span class="nav-number">1.</span> <span class="nav-text">leetcode - Count Primes</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#leetcode_-_Isomorphic_Strings"><span class="nav-number">1.</span> <span class="nav-text">leetcode - Isomorphic Strings</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
