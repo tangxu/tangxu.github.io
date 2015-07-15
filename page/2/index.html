@@ -45,7 +45,7 @@
 
 
 
-  <title> cc、gcc、g++、CC的区别概括 // 山中书事 </title>
+  <title> 山中书事 </title>
 </head>
 
 <body>
@@ -59,7 +59,9 @@
   </div>
 <![endif]-->
 
-  <div class="container one-column page-post-detail">
+  <div class="container one-column 
+   page-home 
+">
     <div class="headband"></div>
 
     <div id="header" class="header">
@@ -127,9 +129,9 @@
       <div class="main-inner">
         <div id="content" class="content">
           
-
   <div id="posts" class="posts-expand">
     
+      
 
   <div class="post post-type-normal ">
     <div class="post-header">
@@ -140,7 +142,9 @@
           
           
             
-              cc、gcc、g++、CC的区别概括
+              <a class="post-title-link" href="/2015/04/20/diff-between-gcc-g/">
+                cc、gcc、g++、CC的区别概括
+              </a>
             
           
         </h1>
@@ -172,7 +176,8 @@
       
 
       
-        <p>gcc是C编译器；g++是C++编译器；linux下cc一般是一个符号连接，指向gcc；gcc和g++都是GUN（组织）的编译器。而CC则一般是makefile里面的一个名字，即宏定义，嘿，因为Linux/Unix都是大小写敏感的系统，这点一定要注意。</p>
+        
+          <p>gcc是C编译器；g++是C++编译器；linux下cc一般是一个符号连接，指向gcc；gcc和g++都是GUN（组织）的编译器。而CC则一般是makefile里面的一个名字，即宏定义，嘿，因为Linux/Unix都是大小写敏感的系统，这点一定要注意。</p>
 <p>cc是Unix系统的C Compiler，而gcc则是GNU Compiler Collection，GNU编译器套装（G++就是GCC这个编译器集合中的C++编译器）。gcc原名为Gun C语言编译器，因为它原本只能处理C语言，但gcc很快地扩展，包含很多编译器（C、C++、Objective-C、Ada、Fortran、Java）。因此，它们是不一样的，一个是古老的C编译器，一个是GNU编译器集合，gcc里面的C编译器比cc强大多了，因此没必要用cc。</p>
 <p>下载不到cc的原因在于：cc来自于昂贵的Unix系统，cc是商业软件。</p>
 <p>Linux下的cc是gcc符号连接，可以通过<code>$ls –l /usr/bin/cc</code>来简单察看，该变量是make程序的内建变量，默认指向gcc。cc符号链接和变量存在的意义在于源码的移植性，可以方便的用gcc来编译老的用cc编译的Unix软件，甚至连makefile都不用改在，而且也便于Linux程序在Unix下编译。</p>
@@ -219,6 +224,7 @@
 <p>完全相同！</p>
 <p>结论：<br>完全相同，可见 extern “C” 与采用 gcc 或 g++ 并无关系，<br>以上的试验还间接的印证了前面的说法：在编译阶段，g++ 是调用 gcc 的。</p>
 
+        
       
     </div>
 
@@ -226,58 +232,21 @@
       
 
       
-        <div class="post-nav">
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2015/07/07/hello-world/">Hello World</a>
-            
-          </div>
-
-          <div class="post-nav-next post-nav-item">
-            
-          </div>
-        </div>
-      
 
       
+      
+        <div class="post-eof"></div>
       
     </div>
   </div>
 
 
-
-    <div class="post-spread">
-      
-        <div class="ds-share flat" data-thread-key="2015/04/20/diff-between-gcc-g/"
-     data-title="cc、gcc、g++、CC的区别概括"
-     data-content=""
-     data-url="http://tangxu.github.io/2015/04/20/diff-between-gcc-g/">
-  <div class="ds-share-inline">
-    <ul  class="ds-share-icons-16">
-
-      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
-      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
-      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
-      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-
-    </ul>
-    <div class="ds-share-icons-more">
-    </div>
+    
   </div>
-</div>
-      
-    </div>
 
-    
-      <div class="comments" id="comments">
-        
-          <div class="ds-thread" data-thread-key="2015/04/20/diff-between-gcc-g/"
-               data-title="cc、gcc、g++、CC的区别概括" data-url="http://tangxu.github.io/2015/04/20/diff-between-gcc-g/">
-          </div>
-        
-      </div>
-    
+  
+  <div class="pagination">
+    <a class="extend prev" rel="prev" href="/">&laquo;</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
   </div>
 
 
@@ -300,15 +269,6 @@
   <div id="sidebar" class="sidebar">
     <div class="sidebar-inner">
 
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
       
 
       <div class="site-overview">
@@ -373,17 +333,6 @@
       </div>
 
       
-        <div class="post-toc-wrap sidebar-panel-active">
-          <div class="post-toc-indicator-top post-toc-indicator"></div>
-          <div class="post-toc">
-            
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#误区一：_gcc_只能编译_C_代码，g++_只能编译_C++_代码"><span class="nav-number">1.</span> <span class="nav-text">误区一： gcc 只能编译 C 代码，g++ 只能编译 C++ 代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#误区二：_gcc_不会定义___cplusplus_宏，而_g++_会"><span class="nav-number">2.</span> <span class="nav-text">误区二： gcc 不会定义 __cplusplus 宏，而 g++ 会</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#误区三：_编译只能用_gcc，链接只能用_g++"><span class="nav-number">3.</span> <span class="nav-text">误区三： 编译只能用 gcc，链接只能用 g++</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#误区四：_extern_“C”_与_gcc_或_g++_有关系"><span class="nav-number">4.</span> <span class="nav-text">误区四： extern “C” 与 gcc 或 g++ 有关系</span></a></li></ol></div>
-            
-          </div>
-          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
-        </div>
-      
 
     </div>
   </div>
@@ -445,145 +394,6 @@
   <script type="text/javascript" src="/js/search-toggle.js"></script>
 
   
-  
-<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.3" id="bootstrap.scrollspy.custom"></script>
-
-
-<script type="text/javascript" id="sidebar.toc.highlight">
-  $(document).ready(function () {
-    var tocSelector = '.post-toc';
-    var $tocSelector = $(tocSelector);
-    var activeCurrentSelector = '.active-current';
-
-    $tocSelector
-      .on('activate.bs.scrollspy', function () {
-        var $currentActiveElement = $(tocSelector + ' .active').last();
-
-        removeCurrentActiveClass();
-        $currentActiveElement.addClass('active-current');
-
-        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
-      })
-      .on('clear.bs.scrollspy', function () {
-        removeCurrentActiveClass();
-      });
-
-    function removeCurrentActiveClass () {
-      $(tocSelector + ' ' + activeCurrentSelector)
-        .removeClass(activeCurrentSelector.substring(1));
-    }
-
-    function processTOC () {
-      getTOCMaxHeight();
-      toggleTOCOverflowIndicators();
-    }
-
-    function getTOCMaxHeight () {
-      var $sidebarInner = $('.sidebar-inner');
-      var height = $('.sidebar').height() -
-                   $tocSelector.position().top -
-                   $('.post-toc-indicator-bottom').height();
-
-      $tocSelector.css('height', height);
-
-      return height;
-    }
-
-    function toggleTOCOverflowIndicators () {
-      tocOverflowIndicator(
-        '.post-toc-indicator-top',
-        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
-      );
-
-      tocOverflowIndicator(
-        '.post-toc-indicator-bottom',
-        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
-      )
-    }
-
-    $(document).on('sidebar.didShow', function () {
-      processTOC();
-    });
-
-    $('body').scrollspy({ target: tocSelector });
-    $(window).on('resize', function () {
-      if ( $('.sidebar').hasClass('sidebar-active') ) {
-        processTOC();
-      }
-    });
-
-    onScroll($tocSelector);
-
-    function onScroll (element) {
-      element.on('mousewheel DOMMouseScroll', function (event) {
-          var oe = event.originalEvent;
-          var delta = oe.wheelDelta || -oe.detail;
-          var self = this;
-
-          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
-          event.preventDefault();
-
-          toggleTOCOverflowIndicators();
-      });
-    }
-
-    function tocOverflowIndicator (indicator, action) {
-      $(indicator).velocity('stop').velocity({
-        opacity: action === 'show' ? 0.4 : 0
-      }, { duration: 100 });
-    }
-
-  });
-</script>
-
-
-  <script type="text/javascript" id="sidebar.nav">
-    $(document).ready(function () {
-      var html = $('html');
-
-      $('.sidebar-nav li').on('click', function () {
-        var item = $(this);
-        var activeTabClassName = 'sidebar-nav-active';
-        var activePanelClassName = 'sidebar-panel-active';
-        if (item.hasClass(activeTabClassName)) {
-          return;
-        }
-
-        var currentTarget = $('.' + activePanelClassName);
-        var target = $('.' + item.data('target'));
-
-        currentTarget.velocity('transition.slideUpOut', 200, function () {
-          target
-            .velocity('stop')
-            .velocity('transition.slideDownIn', 200)
-            .addClass(activePanelClassName);
-        });
-
-        item.siblings().removeClass(activeTabClassName);
-        item.addClass(activeTabClassName);
-      });
-
-      $('.post-toc a').on('click', function (e) {
-        e.preventDefault();
-        var offset = $(escapeSelector(this.getAttribute('href'))).offset().top;
-        html.velocity('stop').velocity('scroll', {
-          offset: offset  + 'px',
-          mobileHA: false
-        });
-      });
-
-      // Expand sidebar on post detail page by default, when post has a toc.
-      var $tocContent = $('.post-toc-content');
-      if (isDesktop() && CONFIG.sidebar === 'post') {
-        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
-          displaySidebar();
-        }
-      }
-    });
-  </script>
-
-
-
 
   <script type="text/javascript">
     $(document).ready(function () {
