@@ -22,7 +22,7 @@
 
 
 
-  <meta name="keywords" content="leetcode," />
+  <meta name="keywords" content="shadowsocks,ubuntu," />
 
 
 
@@ -45,7 +45,7 @@
 
 
 
-  <title> leetcode题解 - Reverse Linked List // 山中书事 </title>
+  <title> ubuntu下使用shadowsocks // 山中书事 </title>
 </head>
 
 <body>
@@ -140,7 +140,7 @@
           
           
             
-              leetcode题解 - Reverse Linked List
+              ubuntu下使用shadowsocks
             
           
         </h1>
@@ -148,7 +148,7 @@
 
       <div class="post-meta">
         <span class="post-time">
-          发表于 2015-07-13
+          发表于 2015-07-20
         </span>
 
         
@@ -157,8 +157,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2015/07/13/leetcode-reverse-linked-list/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/13/leetcode-reverse-linked-list/"></span>
+            <a href="/2015/07/20/use-shadowsocks-on-ubuntu/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/20/use-shadowsocks-on-ubuntu/"></span>
             </a>
           </span>
           
@@ -172,12 +172,19 @@
       
 
       
-        <h2 id="leetcode_-_Reverse_Linked_List">leetcode - Reverse Linked List</h2><p>单链表逆置。</p>
-<p>Code:<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * struct ListNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     ListNode *next;</span><br><span class="line"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    ListNode* reverseList(ListNode* head) &#123;</span><br><span class="line">        <span class="keyword">if</span>(head!=NULL)&#123;</span><br><span class="line">            ListNode* p = head;</span><br><span class="line">            ListNode* prev = NULL;</span><br><span class="line">            <span class="keyword">while</span>(p != NULL)&#123;</span><br><span class="line">                ListNode* tp = p-&gt;next;</span><br><span class="line">                p-&gt;next = prev;</span><br><span class="line">                prev = p;</span><br><span class="line">                p = tp;</span><br><span class="line">            &#125;</span><br><span class="line">            head = prev;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<p>显然，题目是一个很基础的题目。但是自己一直以来对于链表的学习不够，应该要好好加强了，争取又好又快地写出来。</p>
-<p>注意判断空指针先。然后注意中途保存指针。</p>
-<p>还有别的写法，后面补上。</p>
-<p>下班~</p>
+        <h2 id="部署">部署</h2><p>查看python版本：<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">python</span> –<span class="keyword">version</span></span><br></pre></td></tr></table></figure></p>
+<p>低于 2.6 的，需要升级一下。</p>
+<p>然后安装 PIP 环境：<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-<span class="built_in">get</span> install <span class="keyword">python</span>-gevent <span class="keyword">python</span>-pip</span><br></pre></td></tr></table></figure></p>
+<p>安装shadowsocks：<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip <span class="keyword">install</span> shadowsocks</span><br></pre></td></tr></table></figure></p>
+<p>新建配置文件：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">"<span class="attribute">server</span>":<span class="value"><span class="string">"ip_address"</span></span>,</span><br><span class="line">"<span class="attribute">server_port</span>":<span class="value"><span class="number">8989</span></span>,</span><br><span class="line">"<span class="attribute">local_address</span>":<span class="value"><span class="string">"127.0.0.1"</span></span>,</span><br><span class="line">"<span class="attribute">local_port</span>":<span class="value"><span class="number">1080</span></span>,</span><br><span class="line">"<span class="attribute">password</span>":<span class="value"><span class="string">"password"</span></span>,</span><br><span class="line">"<span class="attribute">method</span>":<span class="value"><span class="string">"aes-256-cfb"</span></span><br><span class="line"></span>&#125;</span><br></pre></td></tr></table></figure>
+<p>配置文件选项含义可以参阅：<br><a href="https://github.com/shadowsocks/shadowsocks/wiki/Configuration-via-Config-File" target="_blank" rel="external">https://github.com/shadowsocks/shadowsocks/wiki/Configuration-via-Config-File</a></p>
+<p>为了支持加密：<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-<span class="built_in">get</span> install <span class="keyword">python</span>-m2crypto</span><br></pre></td></tr></table></figure></p>
+<h2 id="启动">启动</h2><p>前台：<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssserver -c <span class="regexp">/etc/</span>shadowsocks.json</span><br></pre></td></tr></table></figure></p>
+<p>后台：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssserver -c /etc/shadowsocks<span class="class">.json</span> -d start</span><br><span class="line">ssserver -c /etc/shadowsocks<span class="class">.json</span> -d stop</span><br></pre></td></tr></table></figure></p>
+<p>用户端使用<code>sslocal</code>代替<code>ssserver</code></p>
+<p>Refer:</p>
+<p><a href="https://github.com/shadowsocks/shadowsocks" target="_blank" rel="external">https://github.com/shadowsocks/shadowsocks</a><br><a href="http://my.oschina.net/gengjie2/blog/366714" target="_blank" rel="external">http://my.oschina.net/gengjie2/blog/366714</a><br><a href="http://www.cnblogs.com/vincedotnet/p/3569648.html" target="_blank" rel="external">http://www.cnblogs.com/vincedotnet/p/3569648.html</a><br><a href="http://www.zhihu.com/question/26418370" target="_blank" rel="external">http://www.zhihu.com/question/26418370</a></p>
 
       
     </div>
@@ -186,7 +193,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/leetcode/"> #leetcode </a>
+            <a href="/tags/shadowsocks/"> #shadowsocks </a>
+          
+            <a href="/tags/ubuntu/"> #ubuntu </a>
           
         </div>
       
@@ -195,13 +204,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/07/14/leetcode-isomorphic-strings/">leetcode题解 - Isomorphic Strings</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/07/12/leetcode-house-robber/">leetcode题解 - House Robber</a>
+              <a href="/2015/07/19/leetcode-happy-number/">leetcode题解 - Happy Number</a>
             
           </div>
         </div>
@@ -216,10 +223,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2015/07/13/leetcode-reverse-linked-list/"
-     data-title="leetcode题解 - Reverse Linked List"
+        <div class="ds-share flat" data-thread-key="2015/07/20/use-shadowsocks-on-ubuntu/"
+     data-title="ubuntu下使用shadowsocks"
      data-content=""
-     data-url="http://tangxu.github.io/2015/07/13/leetcode-reverse-linked-list/">
+     data-url="http://tangxu.github.io/2015/07/20/use-shadowsocks-on-ubuntu/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -240,8 +247,8 @@
     
       <div class="comments" id="comments">
         
-          <div class="ds-thread" data-thread-key="2015/07/13/leetcode-reverse-linked-list/"
-               data-title="leetcode题解 - Reverse Linked List" data-url="http://tangxu.github.io/2015/07/13/leetcode-reverse-linked-list/">
+          <div class="ds-thread" data-thread-key="2015/07/20/use-shadowsocks-on-ubuntu/"
+               data-title="ubuntu下使用shadowsocks" data-url="http://tangxu.github.io/2015/07/20/use-shadowsocks-on-ubuntu/">
           </div>
         
       </div>
@@ -346,7 +353,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#leetcode_-_Reverse_Linked_List"><span class="nav-number">1.</span> <span class="nav-text">leetcode - Reverse Linked List</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#部署"><span class="nav-number">1.</span> <span class="nav-text">部署</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动"><span class="nav-number">2.</span> <span class="nav-text">启动</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

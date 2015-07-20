@@ -142,6 +142,84 @@
           
           
             
+              <a class="post-title-link" href="/2015/07/20/use-shadowsocks-on-ubuntu/">
+                ubuntu下使用shadowsocks
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2015-07-20
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2015/07/20/use-shadowsocks-on-ubuntu/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/20/use-shadowsocks-on-ubuntu/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <h2 id="部署">部署</h2><p>查看python版本：<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">python</span> –<span class="keyword">version</span></span><br></pre></td></tr></table></figure></p>
+<p>低于 2.6 的，需要升级一下。</p>
+<p>然后安装 PIP 环境：<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-<span class="built_in">get</span> install <span class="keyword">python</span>-gevent <span class="keyword">python</span>-pip</span><br></pre></td></tr></table></figure></p>
+<p>安装shadowsocks：<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip <span class="keyword">install</span> shadowsocks</span><br></pre></td></tr></table></figure></p>
+<p>新建配置文件：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">"<span class="attribute">server</span>":<span class="value"><span class="string">"ip_address"</span></span>,</span><br><span class="line">"<span class="attribute">server_port</span>":<span class="value"><span class="number">8989</span></span>,</span><br><span class="line">"<span class="attribute">local_address</span>":<span class="value"><span class="string">"127.0.0.1"</span></span>,</span><br><span class="line">"<span class="attribute">local_port</span>":<span class="value"><span class="number">1080</span></span>,</span><br><span class="line">"<span class="attribute">password</span>":<span class="value"><span class="string">"password"</span></span>,</span><br><span class="line">"<span class="attribute">method</span>":<span class="value"><span class="string">"aes-256-cfb"</span></span><br><span class="line"></span>&#125;</span><br></pre></td></tr></table></figure>
+<p>配置文件选项含义可以参阅：<br><a href="https://github.com/shadowsocks/shadowsocks/wiki/Configuration-via-Config-File" target="_blank" rel="external">https://github.com/shadowsocks/shadowsocks/wiki/Configuration-via-Config-File</a></p>
+<p>为了支持加密：<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-<span class="built_in">get</span> install <span class="keyword">python</span>-m2crypto</span><br></pre></td></tr></table></figure></p>
+<h2 id="启动">启动</h2><p>前台：<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssserver -c <span class="regexp">/etc/</span>shadowsocks.json</span><br></pre></td></tr></table></figure></p>
+<p>后台：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssserver -c /etc/shadowsocks<span class="class">.json</span> -d start</span><br><span class="line">ssserver -c /etc/shadowsocks<span class="class">.json</span> -d stop</span><br></pre></td></tr></table></figure></p>
+<p>用户端使用<code>sslocal</code>代替<code>ssserver</code></p>
+<p>Refer:</p>
+<p><a href="https://github.com/shadowsocks/shadowsocks" target="_blank" rel="external">https://github.com/shadowsocks/shadowsocks</a><br><a href="http://my.oschina.net/gengjie2/blog/366714" target="_blank" rel="external">http://my.oschina.net/gengjie2/blog/366714</a><br><a href="http://www.cnblogs.com/vincedotnet/p/3569648.html" target="_blank" rel="external">http://www.cnblogs.com/vincedotnet/p/3569648.html</a><br><a href="http://www.zhihu.com/question/26418370" target="_blank" rel="external">http://www.zhihu.com/question/26418370</a></p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
               <a class="post-title-link" href="/2015/07/19/leetcode-happy-number/">
                 leetcode题解 - Happy Number
               </a>
@@ -786,84 +864,6 @@
 
 
     
-      
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2015/07/07/equation-test/">
-                hexo使用mathjax
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于 2015-07-07
-        </span>
-
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2015/07/07/equation-test/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/07/equation-test/"></span>
-            </a>
-          </span>
-          
-        
-      </div>
-    </div>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <h2 id="简介">简介</h2><p>mathjax可以方便美观地实现数学公式的显示。</p>
-<p><a href="https://github.com/akfish/hexo-math" target="_blank" rel="external">Hexo MathJax插件</a>是一个很好的选择，相对于其他的实现方法，利用这个插件既可以避免大量的符号转义，还可以按需加载。</p>
-<p>目前最新的版本是1.0.6。</p>
-<h2 id="使用">使用</h2><h3 id="安装">安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-math --save</span><br></pre></td></tr></table></figure>
-<p>具体语法可以参考项目主页:<a href="https://github.com/akfish/hexo-math" target="_blank" rel="external">https://github.com/akfish/hexo-math</a></p>
-<h2 id="效果">效果</h2><p>Simple inline $a = b + c$.</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Simple inline <span class="variable">$a</span> = <span class="tag">b</span> + c$.</span><br></pre></td></tr></table></figure>
-<span>$$\begin{aligned}
-\dot{x} & = \sigma(y-x) \\
-\dot{y} & = \rho x - y - xz \\
-\dot{z} & = -\beta z + xy
-\end{aligned}$$</span><!-- Has MathJax -->
-<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;% math_block %&#125;</span><br><span class="line"><span class="string">\begin&#123;aligned&#125;</span></span><br><span class="line"><span class="string">\dot&#123;x&#125;</span> &amp; = <span class="string">\sigma(y-x)</span> <span class="string">\\</span></span><br><span class="line"><span class="string">\dot&#123;y&#125;</span> &amp; = <span class="string">\rho</span> x - y - xz <span class="string">\\</span></span><br><span class="line"><span class="string">\dot&#123;z&#125;</span> &amp; = -<span class="string">\beta</span> z + xy</span><br><span class="line"><span class="string">\end&#123;aligned&#125;</span></span><br><span class="line">&#123;% endmath_block %&#125;</span><br></pre></td></tr></table></figure>
-
-        
-      
-    </div>
-
-    <div class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </div>
-  </div>
-
-
-    
   </div>
 
   
@@ -902,7 +902,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -916,7 +916,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
@@ -1064,35 +1064,5 @@
             });
     </script>   
 <a href="https://github.com/tangxu"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/c6625ac1f3ee0a12250227cf83ce904423abf351/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_gray_6d6d6d.png"></a>
-<!-- mathjax config similar to math.stackexchange -->
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      processEscapes: true
-    }
-  });
-</script>
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      }
-    });
-</script>
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-
-<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
 </body>
 </html>
