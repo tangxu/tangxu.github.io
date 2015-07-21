@@ -142,6 +142,84 @@
           
           
             
+              <a class="post-title-link" href="/2015/07/21/leetcode-number-of-1-bits/">
+                leetcode题解 - Number of 1 Bits
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2015-07-21
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2015/07/21/leetcode-number-of-1-bits/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/21/leetcode-number-of-1-bits/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>leetcode - Number of 1 Bits</p>
+<p>Write a function that takes an unsigned integer and returns the number of ’1’ bits it has (also known as the Hamming weight).</p>
+<p>For example, the 32-bit integer ’11’ has binary representation 00000000000000000000000000001011, so the function should return 3.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">hammingWeight</span><span class="params">(uint32_t n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(n!=<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">int</span> tp = n%<span class="number">2</span>;</span><br><span class="line">            n /= <span class="number">2</span>;</span><br><span class="line">            sum += tp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>题目比较白痴…… 终于又可以爽一下了……</p>
+<p>不过uint32_t 这个数据类型值得注意下：</p>
+<p>一些解释：</p>
+<p><a href="http://www.cnblogs.com/wwping/articles/2295954.html" target="_blank" rel="external">http://www.cnblogs.com/wwping/articles/2295954.html</a></p>
+<p><a href="http://www.cnblogs.com/wwping/articles/2293898.html" target="_blank" rel="external">http://www.cnblogs.com/wwping/articles/2293898.html</a></p>
+<p>update:  用位操作显然更高效。 自己太不熟悉位操作了。要加强。</p>
+<p>example：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">hammingWeight</span><span class="params">(uint32_t n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (n &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (n &amp; <span class="number">0x1</span>) &#123;</span><br><span class="line">            count++;</span><br><span class="line">        &#125;</span><br><span class="line">        n = n &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>from： <a href="http://blog.csdn.net/booirror/article/details/44218887" target="_blank" rel="external">http://blog.csdn.net/booirror/article/details/44218887</a><br>原数与1相与，得最后一位，累加求和，原数右移一位，继续循环直到原数变为0. 很简洁。</p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
               <a class="post-title-link" href="/2015/07/20/use-shadowsocks-on-ubuntu/">
                 ubuntu下使用shadowsocks
               </a>
@@ -793,77 +871,6 @@
 
 
     
-      
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2015/07/08/leetcode-longest-common-prefix/">
-                leetcode题解 - Longest Common Prefix
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于 2015-07-08
-        </span>
-
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2015/07/08/leetcode-longest-common-prefix/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/08/leetcode-longest-common-prefix/"></span>
-            </a>
-          </span>
-          
-        
-      </div>
-    </div>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <h2 id="leetcode_-_Longest_Common_Prefix">leetcode - Longest Common Prefix</h2><p>Q:</p>
-<p>Write a function to find the longest common prefix string amongst an array of strings.</p>
-<p>Code:</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">longestCommonPrefix</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; strs)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> size = strs.size();</span><br><span class="line">        <span class="keyword">int</span> j=<span class="number">0</span>;</span><br><span class="line">        <span class="built_in">string</span> result;</span><br><span class="line">        <span class="keyword">bool</span> flag = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(size==<span class="number">1</span>) <span class="keyword">return</span> strs[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">if</span>(size&gt;<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">while</span>(flag)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; size; i++ )&#123;</span><br><span class="line">                    <span class="keyword">if</span> (strs[i].size()==<span class="number">0</span>)&#123;<span class="keyword">return</span> result;&#125;</span><br><span class="line">                    <span class="keyword">else</span> <span class="keyword">if</span> ( ((j+<span class="number">1</span>)&gt;strs[i].size()) || ((j+<span class="number">1</span>)&gt;strs[<span class="number">0</span>].size()) || (strs[i][j] != strs[<span class="number">0</span>][j]))&#123;</span><br><span class="line">                    flag = <span class="number">0</span>;&#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(flag==<span class="number">1</span>) j++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>; k&lt;j; k++)</span><br><span class="line">                result.push_back(strs[<span class="number">0</span>][k]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>我的思路：</p>
-<p>从第一个字符开始依次比较每个string，如果均相同则比较下一个，同时计数j加1，直到遇到不同字符。打印出第一个string的前j个字符。</p>
-
-        
-      
-    </div>
-
-    <div class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </div>
-  </div>
-
-
-    
   </div>
 
   
@@ -902,7 +909,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-count">14</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -916,7 +923,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-count">6</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>

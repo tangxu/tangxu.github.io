@@ -22,7 +22,7 @@
 
 
 
-  <meta name="keywords" content="c/c++," />
+  <meta name="keywords" content="bit-manipulation,leetcode," />
 
 
 
@@ -45,7 +45,7 @@
 
 
 
-  <title> 指向字符串的指针为何不能用来修改此字符串 // 山中书事 </title>
+  <title> leetcode题解 - Number of 1 Bits // 山中书事 </title>
 </head>
 
 <body>
@@ -140,7 +140,7 @@
           
           
             
-              指向字符串的指针为何不能用来修改此字符串
+              leetcode题解 - Number of 1 Bits
             
           
         </h1>
@@ -148,7 +148,7 @@
 
       <div class="post-meta">
         <span class="post-time">
-          发表于 2015-07-11
+          发表于 2015-07-21
         </span>
 
         
@@ -157,8 +157,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2015/07/11/can-not-change-string-pointed-by-char-point/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/11/can-not-change-string-pointed-by-char-point/"></span>
+            <a href="/2015/07/21/leetcode-number-of-1-bits/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/21/leetcode-number-of-1-bits/"></span>
             </a>
           </span>
           
@@ -172,10 +172,19 @@
       
 
       
-        <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span>&lt;iostream&gt;</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> a1[]=<span class="string">"hello word!"</span>;</span><br><span class="line">    <span class="keyword">char</span> *p1=<span class="string">"hello word!"</span>;</span><br><span class="line"><span class="comment">//    a1[2]='E';</span></span><br><span class="line"><span class="comment">//    *(p1++) = 'E';</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; a1[i]!=<span class="string">'\0'</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;a1[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;endl;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; *(p1+i)!=<span class="string">'\0'</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// *(p1+i) = 'E'; //error</span></span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;*(p1+i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><a href="http://bbs.csdn.net/topics/390725475" target="_blank" rel="external">http://bbs.csdn.net/topics/390725475</a></p>
-<p><a href="http://blog.sina.com.cn/s/blog_68ff96b70101him1.html" target="_blank" rel="external">http://blog.sina.com.cn/s/blog_68ff96b70101him1.html</a></p>
-<p>C程序设计语言p90. p1 是一个指向字符串常量的指针，如果试图修改字符串的内容，结果是没有定义的。</p>
+        <p>leetcode - Number of 1 Bits</p>
+<p>Write a function that takes an unsigned integer and returns the number of ’1’ bits it has (also known as the Hamming weight).</p>
+<p>For example, the 32-bit integer ’11’ has binary representation 00000000000000000000000000001011, so the function should return 3.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">hammingWeight</span><span class="params">(uint32_t n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(n!=<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">int</span> tp = n%<span class="number">2</span>;</span><br><span class="line">            n /= <span class="number">2</span>;</span><br><span class="line">            sum += tp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>题目比较白痴…… 终于又可以爽一下了……</p>
+<p>不过uint32_t 这个数据类型值得注意下：</p>
+<p>一些解释：</p>
+<p><a href="http://www.cnblogs.com/wwping/articles/2295954.html" target="_blank" rel="external">http://www.cnblogs.com/wwping/articles/2295954.html</a></p>
+<p><a href="http://www.cnblogs.com/wwping/articles/2293898.html" target="_blank" rel="external">http://www.cnblogs.com/wwping/articles/2293898.html</a></p>
+<p>update:  用位操作显然更高效。 自己太不熟悉位操作了。要加强。</p>
+<p>example：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">hammingWeight</span><span class="params">(uint32_t n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (n &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (n &amp; <span class="number">0x1</span>) &#123;</span><br><span class="line">            count++;</span><br><span class="line">        &#125;</span><br><span class="line">        n = n &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>from： <a href="http://blog.csdn.net/booirror/article/details/44218887" target="_blank" rel="external">http://blog.csdn.net/booirror/article/details/44218887</a><br>原数与1相与，得最后一位，累加求和，原数右移一位，继续循环直到原数变为0. 很简洁。</p>
 
       
     </div>
@@ -184,7 +193,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/c-c/"> #c/c++ </a>
+            <a href="/tags/bit-manipulation/"> #bit-manipulation </a>
+          
+            <a href="/tags/leetcode/"> #leetcode </a>
           
         </div>
       
@@ -193,13 +204,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/07/12/leetcode-house-robber/">leetcode题解 - House Robber</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/07/11/leetcode-count-and-say/">leetcode题解 - Count and Say</a>
+              <a href="/2015/07/20/use-shadowsocks-on-ubuntu/">ubuntu下使用shadowsocks</a>
             
           </div>
         </div>
@@ -214,10 +223,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2015/07/11/can-not-change-string-pointed-by-char-point/"
-     data-title="指向字符串的指针为何不能用来修改此字符串"
+        <div class="ds-share flat" data-thread-key="2015/07/21/leetcode-number-of-1-bits/"
+     data-title="leetcode题解 - Number of 1 Bits"
      data-content=""
-     data-url="http://tangxu.github.io/2015/07/11/can-not-change-string-pointed-by-char-point/">
+     data-url="http://tangxu.github.io/2015/07/21/leetcode-number-of-1-bits/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -238,8 +247,8 @@
     
       <div class="comments" id="comments">
         
-          <div class="ds-thread" data-thread-key="2015/07/11/can-not-change-string-pointed-by-char-point/"
-               data-title="指向字符串的指针为何不能用来修改此字符串" data-url="http://tangxu.github.io/2015/07/11/can-not-change-string-pointed-by-char-point/">
+          <div class="ds-thread" data-thread-key="2015/07/21/leetcode-number-of-1-bits/"
+               data-title="leetcode题解 - Number of 1 Bits" data-url="http://tangxu.github.io/2015/07/21/leetcode-number-of-1-bits/">
           </div>
         
       </div>
