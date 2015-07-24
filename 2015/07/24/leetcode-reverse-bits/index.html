@@ -22,7 +22,7 @@
 
 
 
-  <meta name="keywords" content="Hexo,next" />
+  <meta name="keywords" content="bit,leetcode," />
 
 
 
@@ -45,7 +45,7 @@
 
 
 
-  <title> leetcode题解 - Count and Say // 山中书事 </title>
+  <title> leetcode题解 - Reverse Bits // 山中书事 </title>
 </head>
 
 <body>
@@ -140,7 +140,7 @@
           
           
             
-              leetcode题解 - Count and Say
+              leetcode题解 - Reverse Bits
             
           
         </h1>
@@ -148,7 +148,7 @@
 
       <div class="post-meta">
         <span class="post-time">
-          发表于 2015-07-11
+          发表于 2015-07-24
         </span>
 
         
@@ -157,8 +157,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2015/07/11/leetcode-count-and-say/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/11/leetcode-count-and-say/"></span>
+            <a href="/2015/07/24/leetcode-reverse-bits/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/24/leetcode-reverse-bits/"></span>
             </a>
           </span>
           
@@ -172,35 +172,52 @@
       
 
       
-        <h2 id="leetcode_-_Count_and_Say">leetcode - Count and Say</h2><p>Q:</p>
-<p>The count-and-say sequence is the sequence of integers beginning as follows:<br>1, 11, 21, 1211, 111221, …</p>
-<p>1 is read off as “one 1” or 11.<br>11 is read off as “two 1s” or 21.<br>21 is read off as “one 2, then one 1” or 1211.</p>
-<p>Given an integer n, generate the nth sequence.</p>
-<p>Note: The sequence of integers will be represented as a string.</p>
-<p>Code:</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">countAndSay</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> count=<span class="number">1</span>;</span><br><span class="line">        <span class="built_in">string</span> seq, result;</span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"1"</span>;</span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment">//        if(n==2)&#123;</span></span><br><span class="line"><span class="comment">//            return "11";</span></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line">        seq = countAndSay(n-<span class="number">1</span>);</span><br><span class="line">        <span class="built_in">string</span>::iterator iter_seq = seq.begin()+<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(iter_seq!=seq.end())&#123;</span><br><span class="line">            <span class="keyword">if</span> (*iter_seq == *(iter_seq-<span class="number">1</span>))&#123;</span><br><span class="line">                count++;</span><br><span class="line">                iter_seq++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                result.push_back(<span class="string">'0'</span>+count);</span><br><span class="line">                result.push_back(*(iter_seq-<span class="number">1</span>));</span><br><span class="line">                count=<span class="number">1</span>;</span><br><span class="line">                iter_seq++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        result.push_back(<span class="string">'0'</span>+count);</span><br><span class="line">        result.push_back(*(iter_seq-<span class="number">1</span>));</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>我的思路： 递归。</p>
-<p>比较简单。 要注意如何将数字转化为char， push_back只接受char</p>
-<p><a href="http://blog.csdn.net/talentluke/article/details/6050617" target="_blank" rel="external">http://blog.csdn.net/talentluke/article/details/6050617</a></p>
-<p><a href="http://zhidao.baidu.com/link?url=i4aEJh3bn_QWQC-DyXjF3eEorCMklZiEWGg2u8N8MdPl4-HkKQIvL8FazbX7UeRhK3WetF-XXCctpm5ElYHXaa" target="_blank" rel="external">http://zhidao.baidu.com/link?url=i4aEJh3bn_QWQC-DyXjF3eEorCMklZiEWGg2u8N8MdPl4-HkKQIvL8FazbX7UeRhK3WetF-XXCctpm5ElYHXaa</a></p>
+        <p>leetcode - Reverse Bits</p>
+<p>Reverse bits of a given 32 bits unsigned integer.</p>
+<p>For example, given input 43261596 (represented in binary as <code>00000010100101000001111010011100</code>), return 964176192 (represented in binary as <code>00111001011110000010100101000000</code>).</p>
+<p>Follow up:<br>If this function is called many times, how would you optimize it?</p>
+<p>Related problem: Reverse Integer</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">uint32_t</span> reverseBits(<span class="keyword">uint32_t</span> n) &#123;</span><br><span class="line">        <span class="keyword">int</span> bits[<span class="number">32</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;<span class="number">32</span>; i++)</span><br><span class="line">            bits[i]=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">uint32_t</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(n!=<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">int</span> tp = n%<span class="number">2</span>;</span><br><span class="line">            n /= <span class="number">2</span>;</span><br><span class="line">            bits[j] = tp;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">31</span>, k=<span class="number">0</span>; i&gt;=<span class="number">0</span>; i--, k++)&#123;</span><br><span class="line">            sum += <span class="built_in">pow</span>(<span class="number">2</span>,k)*bits[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>题目不难，但是如何optimize? 显然应该是用位操作。自己的这个方法太业余了。</p>
+<p><a href="http://www.bubuko.com/infodetail-670143.html" target="_blank" rel="external">http://www.bubuko.com/infodetail-670143.html</a> 这个文章里讲了非常好的方法，一个是位操作，每次移位直接保存，然后输出即可。</p>
+<p>当然，位操作必须要熟悉，<strong>与1相与得最后一位，与1(0)相或，将某一位设置为1(0); 每次都对最后一位操作，操作完之后左右移位，直到32位全部操作完</strong>。</p>
+<p>example：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">uint32_t</span> reverseBits(<span class="keyword">uint32_t</span> n) &#123;</span><br><span class="line">        <span class="keyword">uint32_t</span>  answer;</span><br><span class="line">        <span class="keyword">uint32_t</span> <span class="keyword">int</span> i;</span><br><span class="line">    </span><br><span class="line">        answer = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">        <span class="comment">/*把一个unsigned int 数字1一直左移，直到它变成全0的时候，也就得到了该机器内unsigned int的长度*/</span></span><br><span class="line">        <span class="keyword">for</span> (i = <span class="number">1</span>; i != <span class="number">0</span>; i &lt;&lt;= <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            answer &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (value &amp; <span class="number">1</span>) &#123; answer |= <span class="number">1</span>; &#125;</span><br><span class="line">            value &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">        <span class="keyword">return</span> answer;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>然而更好的办法是一种二分翻转的办法 （自己起的名字。。。）</p>
+<blockquote>
+<p><a href="http://graphics.stanford.edu/~seander/bithacks.html" target="_blank" rel="external">http://graphics.stanford.edu/~seander/bithacks.html</a></p>
+<p>在斯坦福的这篇文章里面介绍了众多有关位操作的奇思妙想，有些方法的确让人称赞，其中对于位翻转有这样的一种方法，将数字的位按照整块整块的翻转，例如32位分成两块16位的数字，16位分成两个8位进行翻转，这样以此类推知道只有一位。</p>
+<p>对于一个8位数字abcdefgh来讲，处理的过程如下</p>
+<p><code>abcdefgh -&gt; efghabcd -&gt; ghefcdab -&gt; hgfedcba</code></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">uint32_t</span> reverseBits(<span class="keyword">uint32_t</span> n) &#123;</span><br><span class="line">        n = (n &gt;&gt; <span class="number">16</span>) | (n &lt;&lt; <span class="number">16</span>);</span><br><span class="line">        n = ((n &amp; <span class="number">0xff00ff00</span>) &gt;&gt; <span class="number">8</span>) | ((n &amp; <span class="number">0x00ff00ff</span>) &lt;&lt; <span class="number">8</span>);</span><br><span class="line">        n = ((n &amp; <span class="number">0xf0f0f0f0</span>) &gt;&gt; <span class="number">4</span>) | ((n &amp; <span class="number">0x0f0f0f0f</span>) &lt;&lt; <span class="number">4</span>);</span><br><span class="line">        n = ((n &amp; <span class="number">0xcccccccc</span>) &gt;&gt; <span class="number">2</span>) | ((n &amp; <span class="number">0x33333333</span>) &lt;&lt; <span class="number">2</span>);</span><br><span class="line">        n = ((n &amp; <span class="number">0xaaaaaaaa</span>) &gt;&gt; <span class="number">1</span>) | ((n &amp; <span class="number">0x55555555</span>) &lt;&lt; <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> n;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>这种方法的效率为O(log sizeof(int))。</p>
+</blockquote>
+<p>from: <a href="http://www.bubuko.com/infodetail-670143.html" target="_blank" rel="external">http://www.bubuko.com/infodetail-670143.html</a></p>
+<p>amazing！</p>
 
       
     </div>
 
     <div class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/bit/"> #bit </a>
+          
+            <a href="/tags/leetcode/"> #leetcode </a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/07/11/can-not-change-string-pointed-by-char-point/">指向字符串的指针为何不能用来修改此字符串</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/07/09/leetcode-count-primes/">leetcode题解 - Count Primes</a>
+              <a href="/2015/07/21/leetcode-number-of-1-bits/">leetcode题解 - Number of 1 Bits</a>
             
           </div>
         </div>
@@ -215,10 +232,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2015/07/11/leetcode-count-and-say/"
-     data-title="leetcode题解 - Count and Say"
+        <div class="ds-share flat" data-thread-key="2015/07/24/leetcode-reverse-bits/"
+     data-title="leetcode题解 - Reverse Bits"
      data-content=""
-     data-url="http://tangxu.github.io/2015/07/11/leetcode-count-and-say/">
+     data-url="http://tangxu.github.io/2015/07/24/leetcode-reverse-bits/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -239,8 +256,8 @@
     
       <div class="comments" id="comments">
         
-          <div class="ds-thread" data-thread-key="2015/07/11/leetcode-count-and-say/"
-               data-title="leetcode题解 - Count and Say" data-url="http://tangxu.github.io/2015/07/11/leetcode-count-and-say/">
+          <div class="ds-thread" data-thread-key="2015/07/24/leetcode-reverse-bits/"
+               data-title="leetcode题解 - Reverse Bits" data-url="http://tangxu.github.io/2015/07/24/leetcode-reverse-bits/">
           </div>
         
       </div>
@@ -345,7 +362,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#leetcode_-_Count_and_Say"><span class="nav-number">1.</span> <span class="nav-text">leetcode - Count and Say</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
