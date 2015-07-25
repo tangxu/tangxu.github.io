@@ -45,7 +45,7 @@
 
 
 
-  <title> leetcode题解 - Isomorphic Strings // 山中书事 </title>
+  <title> leetcode题解 - Factorial Trailing Zeros // 山中书事 </title>
 </head>
 
 <body>
@@ -140,7 +140,7 @@
           
           
             
-              leetcode题解 - Isomorphic Strings
+              leetcode题解 - Factorial Trailing Zeros
             
           
         </h1>
@@ -148,7 +148,7 @@
 
       <div class="post-meta">
         <span class="post-time">
-          发表于 2015-07-14
+          发表于 2015-07-25
         </span>
 
         
@@ -157,8 +157,8 @@
           
             <span class="post-comments-count">
             &nbsp; | &nbsp;
-            <a href="/2015/07/14/leetcode-isomorphic-strings/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/14/leetcode-isomorphic-strings/"></span>
+            <a href="/2015/07/25/leetcode-factorial-trailing-zeros/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/25/leetcode-factorial-trailing-zeros/"></span>
             </a>
           </span>
           
@@ -172,16 +172,15 @@
       
 
       
-        <h2 id="leetcode_-_Isomorphic_Strings">leetcode - Isomorphic Strings</h2><p>Given two strings s and t, determine if they are isomorphic.</p>
-<p>Two strings are isomorphic if the characters in s can be replaced to get t.</p>
-<p>All occurrences of a character must be replaced with another character while preserving the order of characters. No two characters may map to the same character but a character may map to itself.</p>
-<p>For example,<br>Given “egg”, “add”, return true.<br>Given “foo”, “bar”, return false.<br>Given “paper”, “title”, return true.</p>
-<p>Note:<br>You may assume both s and t have the same length.</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isIsomorphic</span><span class="params">(<span class="built_in">string</span> s, <span class="built_in">string</span> t)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> sHashtable[<span class="number">256</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span> tHashtable[<span class="number">256</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span> len = s.size();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;len; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(sHashtable[s[i]]==<span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(tHashtable[t[i]]==<span class="number">0</span>)&#123;</span><br><span class="line">                    sHashtable[s[i]]=t[i];</span><br><span class="line">                    tHashtable[t[i]]=s[i];</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">if</span>(sHashtable[s[i]]!=t[i]) <span class="keyword">return</span> <span class="number">0</span>;<span class="comment">//same char map to different chars</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>题目的标签是hashtable，一开始我想用简单的方法，以为只有24个字母，所以就把每个字母的映射存下来。但是后来发现，不仅仅有字母，还有数字，所以24维的数组肯定不行。另外不仅要保证<strong>同样</strong>的字母映射到<strong>同样</strong>的字母，还要保证<strong>不同</strong>的字母<strong>不能</strong>映射到一样的字母。</p>
-<p>参考了别人的写法。 思路是建立256维数组（因为最多有256个ascii码？），然后建立两个hash表。开始遍历，如果string s 中出现新字符，要确保映射t也是新的。如果s中是以前出现过的，那么就要验证其映射是否和以前一样。</p>
-<p>（其实第二个hashtable 只是一个flag，用于验证是否出现过了）</p>
-<p>fighting……</p>
+        <p>Given an integer n, return the number of trailing zeroes in n!.</p>
+<p>Note: Your solution should be in logarithmic time complexity.</p>
+<p>求n的阶乘末尾有多少个零，要求对数复杂度。</p>
+<p>Code：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">trailingZeroes</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> count=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(n)&#123;</span><br><span class="line">            count += n/<span class="number">5</span>;</span><br><span class="line">            n /= <span class="number">5</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>没想到这个解法，虽然想到了只需数5的个数。</p>
+<p>本质上就是看乘数里面有多少个因子5. 所有的因子5都会和偶数相乘得到一个0；</p>
+<p>原数除以5得到的因子5的个数，但是25里面有两个因子5，所以原数除以5后再计算一遍，直到数字为0。</p>
+<p>或者说，计算的是5的个数+25的个数（包括两个5）+125的个数（包括3个5）+。。。</p>
+<p>具体分析：<a href="http://www.cnblogs.com/ganganloveu/p/4193373.html" target="_blank" rel="external">http://www.cnblogs.com/ganganloveu/p/4193373.html</a></p>
 
       
     </div>
@@ -199,13 +198,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/07/15/leetcode-remove-linked-list-elements/">leetcode题解 - Remove Linked List Elements</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/07/13/leetcode-reverse-linked-list/">leetcode题解 - Reverse Linked List</a>
+              <a href="/2015/07/24/leetcode-reverse-bits/">leetcode题解 - Reverse Bits</a>
             
           </div>
         </div>
@@ -220,10 +217,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2015/07/14/leetcode-isomorphic-strings/"
-     data-title="leetcode题解 - Isomorphic Strings"
+        <div class="ds-share flat" data-thread-key="2015/07/25/leetcode-factorial-trailing-zeros/"
+     data-title="leetcode题解 - Factorial Trailing Zeros"
      data-content=""
-     data-url="http://tangxu.github.io/2015/07/14/leetcode-isomorphic-strings/">
+     data-url="http://tangxu.github.io/2015/07/25/leetcode-factorial-trailing-zeros/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -244,8 +241,8 @@
     
       <div class="comments" id="comments">
         
-          <div class="ds-thread" data-thread-key="2015/07/14/leetcode-isomorphic-strings/"
-               data-title="leetcode题解 - Isomorphic Strings" data-url="http://tangxu.github.io/2015/07/14/leetcode-isomorphic-strings/">
+          <div class="ds-thread" data-thread-key="2015/07/25/leetcode-factorial-trailing-zeros/"
+               data-title="leetcode题解 - Factorial Trailing Zeros" data-url="http://tangxu.github.io/2015/07/25/leetcode-factorial-trailing-zeros/">
           </div>
         
       </div>
@@ -350,7 +347,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#leetcode_-_Isomorphic_Strings"><span class="nav-number">1.</span> <span class="nav-text">leetcode - Isomorphic Strings</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
