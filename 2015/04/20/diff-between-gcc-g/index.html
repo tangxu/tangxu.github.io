@@ -188,8 +188,8 @@
 <h3 id="误区四：_extern_“C”_与_gcc_或_g++_有关系">误区四： extern “C” 与 gcc 或 g++ 有关系</h3><p>实际上并无关系，<br>无论是 gcc 还是 g++，用 extern “C” 时，都是以 C 的命名方式来为 函数 命名，<br>否则，都以 C++ 方式为 函数 命名。<br>试验如下：</p>
 <p>test.h:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span> <span class="function"><span class="keyword">void</span> <span class="title">CppPrintf</span><span class="params">(<span class="keyword">void</span>)</span></span>;</span><br></pre></td></tr></table></figure></p>
 <p>test.cpp: </p>
-<pre><code><span class="preprocessor">#<span class="keyword">include</span> &lt;iostream&gt;</span>
-<span class="preprocessor">#<span class="keyword">include</span> "test.h"</span>
+<pre><code><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span>
+<span class="preprocessor">#<span class="keyword">include</span> <span class="string">"test.h"</span></span>
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;
 <span class="function"><span class="keyword">void</span>
 <span class="title">CppPrintf</span><span class="params">( <span class="keyword">void</span> )</span>
@@ -197,9 +197,9 @@
 <span class="built_in">cout</span> &lt;&lt; <span class="string">"Hellon"</span>;
 }
 </code></pre><p>main.cpp: </p>
-<pre><code><span class="preprocessor">#<span class="keyword">include</span> &lt;stdlib.h&gt;</span>
-<span class="preprocessor">#<span class="keyword">include</span> &lt;stdio.h&gt;</span>
-<span class="preprocessor">#<span class="keyword">include</span> "test.h"</span>
+<pre><code><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span>
+<span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span>
+<span class="preprocessor">#<span class="keyword">include</span> <span class="string">"test.h"</span></span>
 <span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">( <span class="keyword">void</span> )</span>
 </span>{
  CppPrintf();
@@ -632,5 +632,35 @@
             });
     </script>   
 <a href="https://github.com/tangxu"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/c6625ac1f3ee0a12250227cf83ce904423abf351/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_gray_6d6d6d.png"></a>
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 </body>
 </html>

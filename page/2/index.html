@@ -177,7 +177,8 @@
 
       
         
-          <h2 id="leetcode_-_Count_and_Say">leetcode - Count and Say</h2><p>Q:</p>
+          <p>##leetcode - Count and Say </p>
+<p>Q:</p>
 <p>The count-and-say sequence is the sequence of integers beginning as follows:<br>1, 11, 21, 1211, 111221, …</p>
 <p>1 is read off as “one 1” or 11.<br>11 is read off as “two 1s” or 21.<br>21 is read off as “one 2, then one 1” or 1211.</p>
 <p>Given an integer n, generate the nth sequence.</p>
@@ -328,7 +329,8 @@
 
       
         
-          <h2 id="leetcode_-_Longest_Common_Prefix">leetcode - Longest Common Prefix</h2><p>Q:</p>
+          <p>##leetcode - Longest Common Prefix</p>
+<p>Q:</p>
 <p>Write a function to find the longest common prefix string amongst an array of strings.</p>
 <p>Code:</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">longestCommonPrefix</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; strs)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> size = strs.size();</span><br><span class="line">        <span class="keyword">int</span> j=<span class="number">0</span>;</span><br><span class="line">        <span class="built_in">string</span> result;</span><br><span class="line">        <span class="keyword">bool</span> flag = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(size==<span class="number">1</span>) <span class="keyword">return</span> strs[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">if</span>(size&gt;<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">while</span>(flag)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; size; i++ )&#123;</span><br><span class="line">                    <span class="keyword">if</span> (strs[i].size()==<span class="number">0</span>)&#123;<span class="keyword">return</span> result;&#125;</span><br><span class="line">                    <span class="keyword">else</span> <span class="keyword">if</span> ( ((j+<span class="number">1</span>)&gt;strs[i].size()) || ((j+<span class="number">1</span>)&gt;strs[<span class="number">0</span>].size()) || (strs[i][j] != strs[<span class="number">0</span>][j]))&#123;</span><br><span class="line">                    flag = <span class="number">0</span>;&#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(flag==<span class="number">1</span>) j++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>; k&lt;j; k++)</span><br><span class="line">                result.push_back(strs[<span class="number">0</span>][k]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
@@ -404,8 +406,9 @@
 <p>目前最新的版本是1.0.6。</p>
 <h2 id="使用">使用</h2><h3 id="安装">安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-math --save</span><br></pre></td></tr></table></figure>
 <p>具体语法可以参考项目主页:<a href="https://github.com/akfish/hexo-math" target="_blank" rel="external">https://github.com/akfish/hexo-math</a></p>
-<h2 id="效果">效果</h2><p>Simple inline $a = b + c$.</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Simple inline <span class="variable">$a</span> = <span class="tag">b</span> + c$.</span><br></pre></td></tr></table></figure>
+<p>##效果</p>
+<p>Simple inline $a = b + c$.</p>
+<figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Simple inline <span class="variable">$a</span> = b + c$.</span><br></pre></td></tr></table></figure>
 <span>$$\begin{aligned}
 \dot{x} & = \sigma(y-x) \\
 \dot{y} & = \rho x - y - xz \\
@@ -567,8 +570,8 @@
 <h3 id="误区四：_extern_“C”_与_gcc_或_g++_有关系">误区四： extern “C” 与 gcc 或 g++ 有关系</h3><p>实际上并无关系，<br>无论是 gcc 还是 g++，用 extern “C” 时，都是以 C 的命名方式来为 函数 命名，<br>否则，都以 C++ 方式为 函数 命名。<br>试验如下：</p>
 <p>test.h:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span> <span class="function"><span class="keyword">void</span> <span class="title">CppPrintf</span><span class="params">(<span class="keyword">void</span>)</span></span>;</span><br></pre></td></tr></table></figure></p>
 <p>test.cpp: </p>
-<pre><code><span class="preprocessor">#<span class="keyword">include</span> &lt;iostream&gt;</span>
-<span class="preprocessor">#<span class="keyword">include</span> "test.h"</span>
+<pre><code><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span>
+<span class="preprocessor">#<span class="keyword">include</span> <span class="string">"test.h"</span></span>
 <span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;
 <span class="function"><span class="keyword">void</span>
 <span class="title">CppPrintf</span><span class="params">( <span class="keyword">void</span> )</span>
@@ -576,9 +579,9 @@
 <span class="built_in">cout</span> &lt;&lt; <span class="string">"Hellon"</span>;
 }
 </code></pre><p>main.cpp: </p>
-<pre><code><span class="preprocessor">#<span class="keyword">include</span> &lt;stdlib.h&gt;</span>
-<span class="preprocessor">#<span class="keyword">include</span> &lt;stdio.h&gt;</span>
-<span class="preprocessor">#<span class="keyword">include</span> "test.h"</span>
+<pre><code><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span>
+<span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span>
+<span class="preprocessor">#<span class="keyword">include</span> <span class="string">"test.h"</span></span>
 <span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">( <span class="keyword">void</span> )</span>
 </span>{
  CppPrintf();

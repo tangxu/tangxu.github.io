@@ -173,7 +173,7 @@
 
       
         <h2 id="leetcode_-_Remove_Linked_List_Elements">leetcode - Remove Linked List Elements</h2><p>Code:</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * struct ListNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     ListNode *next;</span><br><span class="line"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    ListNode* removeElements(ListNode* head, <span class="keyword">int</span> val) &#123;</span><br><span class="line">        <span class="comment">//if(head == NULL) return head;</span></span><br><span class="line">        <span class="keyword">while</span>(head!=NULL &amp;&amp; head-&gt;val == val)&#123;</span><br><span class="line">            head = head-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(head == NULL) <span class="keyword">return</span> head;</span><br><span class="line">        ListNode* prev = head;</span><br><span class="line">        ListNode* p = head-&gt;next;</span><br><span class="line">        <span class="keyword">while</span>(p!=NULL)&#123;</span><br><span class="line">            <span class="keyword">if</span>(p-&gt;val == val)&#123;</span><br><span class="line">                    p = p-&gt;next;</span><br><span class="line">                    prev-&gt;next = p;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    p = p-&gt;next;</span><br><span class="line">                    prev = prev-&gt;next;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * Definition for singly-linked list.</span><br><span class="line"> * struct ListNode &#123;</span><br><span class="line"> *     int val;</span><br><span class="line"> *     ListNode *next;</span><br><span class="line"> *     ListNode(int x) : val(x), next(NULL) &#123;&#125;</span><br><span class="line"> * &#125;;</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">removeElements</span><span class="params">(ListNode* head, <span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//if(head == NULL) return head;</span></span><br><span class="line">        <span class="keyword">while</span>(head!=<span class="literal">NULL</span> &amp;&amp; head-&gt;val == val)&#123;</span><br><span class="line">            head = head-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(head == <span class="literal">NULL</span>) <span class="keyword">return</span> head;</span><br><span class="line">        ListNode* prev = head;</span><br><span class="line">        ListNode* p = head-&gt;next;</span><br><span class="line">        <span class="keyword">while</span>(p!=<span class="literal">NULL</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(p-&gt;val == val)&#123;</span><br><span class="line">                    p = p-&gt;next;</span><br><span class="line">                    prev-&gt;next = p;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    p = p-&gt;next;</span><br><span class="line">                    prev = prev-&gt;next;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>竟然写了好久——自己的链表真的好差啊……</p>
 <p>需要注意必须保存当前节点p和前驱节点prev，如果当前节点=val，那么将前驱节点的next=当前节点的下一节点。</p>
 <p>另外head节点要特别处理，因为head所指向的没有前驱节点。所以如果第一个节点=val，直接将head=head-&gt;next.</p>
@@ -599,5 +599,35 @@
             });
     </script>   
 <a href="https://github.com/tangxu"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/c6625ac1f3ee0a12250227cf83ce904423abf351/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_gray_6d6d6d.png"></a>
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 </body>
 </html>

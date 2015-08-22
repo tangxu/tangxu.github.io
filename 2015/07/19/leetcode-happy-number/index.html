@@ -175,11 +175,15 @@
         <p>leetcode - happy number</p>
 <p>Write an algorithm to determine if a number is “happy”.</p>
 <p>A happy number is a number defined by the following process: Starting with any positive integer, replace the number by the sum of the squares of its digits, and repeat the process until the number equals 1 (where it will stay), or it loops endlessly in a cycle which does not include 1. Those numbers for which this process ends in 1 are happy numbers.</p>
-<p>Example: 19 is a happy number</p>
-<p>$1^2 + 9^2 = 82$<br>$8^2 + 2^2 = 68$<br>$6^2 + 8^2 = 100$<br>$1^2 + 0^2 + 0^2 = 1$</p>
+<p>Example: 19 is a happy number<br><span>$$\begin{aligned}
+1^2 + 9^2 = 82\\
+8^2 + 2^2 = 68\\
+6^2 + 8^2 = 100\\
+1^2 + 0^2 + 0^2 = 1
+\end{aligned}$$</span><!-- Has MathJax --></p>
 <p>Code:</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isHappy</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> hashtable[<span class="number">800</span>];</span><br><span class="line">        <span class="comment">//vector&lt;int&gt; iter;</span></span><br><span class="line">        <span class="built_in">memset</span>(hashtable, -<span class="number">1</span>, <span class="keyword">sizeof</span>(hashtable));<span class="comment">//initilize all elements as -1;</span></span><br><span class="line">        <span class="keyword">int</span> sum=<span class="number">0</span>;</span><br><span class="line">        <span class="comment">//int it=0;</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span>(hashtable[getsum(n)]== -<span class="number">1</span>)&#123;</span><br><span class="line">            sum = getsum(n);</span><br><span class="line">            hashtable[sum] = <span class="number">1</span>;</span><br><span class="line">            <span class="comment">//if(iter.find(n)!= n.pos) return 0;</span></span><br><span class="line">            <span class="comment">//iter.push_back(n);</span></span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span>(sum == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">else</span> n = sum;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getsum</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">            <span class="keyword">int</span> nn = n;</span><br><span class="line">            <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span>(nn&gt;<span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">int</span> tp = nn%<span class="number">10</span>;</span><br><span class="line">                nn = nn/<span class="number">10</span>;</span><br><span class="line">                sum = sum + tp*tp;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>由于int最大为10位（32位系统），所以hashtable只需9<em>9</em>10=810维即可。先将hashtable初始化为-1，对于新得到的sum，将对应的hashtable标记为1，继续循环，直到最终sum为1（是happy number）或者hashtable已经为1（绕了一圈回到已经经过的地方，说明不是happy number）。</p>
+<p>由于int最大为10位（32位系统），所以hashtable只需 <span>$9*9*10=810$</span><!-- Has MathJax --> 维即可。先将hashtable初始化为-1，对于新得到的sum，将对应的hashtable标记为1，继续循环，直到最终sum为1（是happy number）或者hashtable已经为1（绕了一圈回到已经经过的地方，说明不是happy number）。</p>
 
       
     </div>
@@ -604,5 +608,35 @@
             });
     </script>   
 <a href="https://github.com/tangxu"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://camo.githubusercontent.com/c6625ac1f3ee0a12250227cf83ce904423abf351/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_gray_6d6d6d.png"></a>
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 </body>
 </html>
