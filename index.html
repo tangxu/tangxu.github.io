@@ -142,6 +142,83 @@
           
           
             
+              <a class="post-title-link" href="/2015/08/22/leetcode-rotate-array/">
+                Leetcode - Rotate Array
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于 2015-08-22
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+            &nbsp; | &nbsp;
+            <a href="/2015/08/22/leetcode-rotate-array/#comments" >
+              <span class="post-comments-count ds-thread-count" data-thread-key="2015/08/22/leetcode-rotate-array/"></span>
+            </a>
+          </span>
+          
+        
+      </div>
+    </div>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>Leetcode - Rotate Array</p>
+<p>Rotate an array of n elements to the right by k steps.</p>
+<p>For example, with n = 7 and k = 3, the array [1,2,3,4,5,6,7] is rotated to [5,6,7,1,2,3,4].</p>
+<p>Note:<br>Try to come up as many solutions as you can, there are at least 3 different ways to solve this problem.</p>
+<p>[show hint]</p>
+<p>Hint:<br>Could you do it in-place with O(1) extra space?<br>Related problem: Reverse Words in a String II</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">rotate</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line">        <span class="comment">//vector&lt;int&gt;::iterator it1 = nums.begin();</span></span><br><span class="line">        <span class="keyword">if</span>(k==<span class="number">0</span>) <span class="keyword">return</span>;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator it2 = nums.begin() + (nums.size() - k%nums.size());</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator it = it2;</span><br><span class="line">        <span class="keyword">while</span>(it!=nums.end())&#123;</span><br><span class="line">            res.push_back(*it);</span><br><span class="line">            it++;</span><br><span class="line">        &#125;</span><br><span class="line">        it = nums.begin();</span><br><span class="line">        <span class="keyword">while</span>(it!= it2)&#123;</span><br><span class="line">            res.push_back(*it);</span><br><span class="line">            it++;</span><br><span class="line">        &#125;</span><br><span class="line">        nums = res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>然而这个方法空间复杂度为n，还有一种空间复杂度为1的版本：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Solution &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">rotate</span><span class="params">(<span class="keyword">int</span> nums[], <span class="keyword">int</span> n, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        k = k % n;</span><br><span class="line">        reverse(nums, nums + n);</span><br><span class="line">        reverse(nums, nums + k);</span><br><span class="line">        reverse(nums + k, nums + n);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>先把AB reverse一次得到reverse(B)reverse(A)</p>
+<p>然后再把reverse(B),reverse(A)分别reverse一次就得到了BA</p>
+<p>很巧妙。</p>
+
+        
+      
+    </div>
+
+    <div class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </div>
+  </div>
+
+
+    
+      
+
+  <div class="post post-type-normal ">
+    <div class="post-header">
+
+      
+      
+        <h1 class="post-title">
+          
+          
+            
               <a class="post-title-link" href="/2015/07/25/leetcode-factorial-trailing-zeros/">
                 leetcode题解 - Factorial Trailing Zeros
               </a>
@@ -820,75 +897,6 @@
 
 
     
-      
-
-  <div class="post post-type-normal ">
-    <div class="post-header">
-
-      
-      
-        <h1 class="post-title">
-          
-          
-            
-              <a class="post-title-link" href="/2015/07/11/can-not-change-string-pointed-by-char-point/">
-                指向字符串的指针为何不能用来修改此字符串
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于 2015-07-11
-        </span>
-
-        
-
-        
-          
-            <span class="post-comments-count">
-            &nbsp; | &nbsp;
-            <a href="/2015/07/11/can-not-change-string-pointed-by-char-point/#comments" >
-              <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/11/can-not-change-string-pointed-by-char-point/"></span>
-            </a>
-          </span>
-          
-        
-      </div>
-    </div>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> a1[]=<span class="string">"hello word!"</span>;</span><br><span class="line">    <span class="keyword">char</span> *p1=<span class="string">"hello word!"</span>;</span><br><span class="line"><span class="comment">//    a1[2]='E';</span></span><br><span class="line"><span class="comment">//    *(p1++) = 'E';</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; a1[i]!=<span class="string">'\0'</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;a1[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;endl;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; *(p1+i)!=<span class="string">'\0'</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// *(p1+i) = 'E'; //error</span></span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;*(p1+i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><a href="http://bbs.csdn.net/topics/390725475" target="_blank" rel="external">http://bbs.csdn.net/topics/390725475</a></p>
-<p><a href="http://blog.sina.com.cn/s/blog_68ff96b70101him1.html" target="_blank" rel="external">http://blog.sina.com.cn/s/blog_68ff96b70101him1.html</a></p>
-<p>C程序设计语言p90. p1 是一个指向字符串常量的指针，如果试图修改字符串的内容，结果是没有定义的。</p>
-
-        
-      
-    </div>
-
-    <div class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </div>
-  </div>
-
-
-    
   </div>
 
   
@@ -927,7 +935,7 @@
         <div class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -941,7 +949,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-count">8</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
